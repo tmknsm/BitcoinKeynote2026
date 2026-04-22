@@ -1,0 +1,30 @@
+/* ============================================================
+   AButtonDefaultGroup — Arcade Design System Button Group
+   A multi-button lockup for standard buttons.
+   ============================================================ */
+
+.a-button-default-group {
+  display: flex;
+  width: 100%;
+  padding: 0 16px;
+  gap: 8px;
+}
+
+.a-button-default-group--vertical {
+  flex-direction: column;
+}
+
+.a-button-default-group--horizontal {
+  flex-direction: row;
+}
+
+/* In vertical orientation, buttons stretch full width */
+.a-button-default-group--vertical > .a-button-default {
+  width: 100%;
+}
+
+/* In horizontal orientation, buttons share space equally */
+.a-button-default-group--horizontal > .a-button-default {
+  flex: 1 0 0;
+  min-width: 0;
+}

@@ -1,0 +1,133 @@
+/* ============================================================
+   Arcade Color Tokens
+   Import: @import '@/assets/arcade-colors.css';
+   Usage:  color: var(--arcade-text-standard);  background: var(--arcade-bg-app);
+
+   Light mode is default. Dark mode activates via .dark class on
+   an ancestor, controlled by the hub's light/dark toggle.
+   ============================================================ */
+
+/* --- Light mode (default) --- */
+
+:root {
+
+  /* ── Text ── */
+  --arcade-text-standard: #000000;
+  --arcade-text-subtle: #666666;
+  --arcade-text-inverse: #ffffff;
+  --arcade-text-disabled: #959595;
+  --arcade-text-placeholder: #666666;
+  --arcade-text-warning: #cc4b03;
+  --arcade-text-danger: #d3040e;
+  --arcade-text-success: #00792c;
+  --arcade-text-link: #000000;
+  --arcade-text-link-visited: #660199;
+  --arcade-text-brand: #00e013;
+
+  /* ── Icon ── */
+  --arcade-icon-standard: #000000;
+  --arcade-icon-extra-subtle: #959595;
+  --arcade-icon-inverse: #ffffff;
+  --arcade-icon-disabled: #959595;
+  --arcade-icon-warning: #cc4b03;
+  --arcade-icon-danger: #d3040e;
+  --arcade-icon-success: #00792c;
+  --arcade-icon-brand: #00e013;
+
+  /* ── Background ── */
+  --arcade-bg-app: #ffffff;
+  --arcade-bg-standard: #e8e8e8;
+  --arcade-bg-prominent: #cccccc;
+  --arcade-bg-extra-prominent: #959595;
+  --arcade-bg-subtle: #f0f0f0;
+  --arcade-bg-inverse: #000000;
+  --arcade-bg-inverse-pressed: #666666;
+  --arcade-bg-warning: #cc4b03;
+  --arcade-bg-danger: #d3040e;
+  --arcade-bg-notification: #d7040e;
+  --arcade-bg-brand: #00e013;
+  --arcade-bg-keypad: #00e013;
+
+  /* ── Border ── */
+  --arcade-border-prominent: #101010;
+  --arcade-border-standard: #959595;
+  --arcade-border-subtle: #e8e8e8;
+  --arcade-border-inverse: #ffffff;
+  --arcade-border-app: #ffffff;
+  --arcade-border-warning: #cc4b03;
+  --arcade-border-danger: #d3040e;
+  --arcade-border-success: #00792c;
+  --arcade-border-brand: #00e013;
+
+  /* ── Data ── */
+  --arcade-data-trend-positive: #00e013;
+  --arcade-data-trend-negative: #000000;
+  --arcade-data-portion-full: #00e013;
+  --arcade-data-portion-empty: #f0f0f0;
+
+  /* ── UI Component ── */
+  --arcade-ui-dimmer: rgba(0, 0, 0, 0.45);
+}
+
+/* --- Dark mode (triggered by .dark class from hub toggle) --- */
+
+
+.dark {
+
+  /* ── Text ── */
+  --arcade-text-standard: #ffffff;
+  --arcade-text-subtle: #999999;
+  --arcade-text-inverse: #000000;
+  --arcade-text-disabled: #666666;
+  --arcade-text-placeholder: #999999;
+  --arcade-text-warning: #cc4b03;
+  --arcade-text-danger: #d3040e;
+  --arcade-text-success: #00792c;
+  --arcade-text-link: #ffffff;
+  --arcade-text-link-visited: #660199;
+  --arcade-text-brand: #00e013;
+
+  /* ── Icon ── */
+  --arcade-icon-standard: #ffffff;
+  --arcade-icon-extra-subtle: #666666;
+  --arcade-icon-inverse: #000000;
+  --arcade-icon-disabled: #666666;
+  --arcade-icon-warning: #cc4b03;
+  --arcade-icon-danger: #d3040e;
+  --arcade-icon-success: #00792c;
+  --arcade-icon-brand: #00e013;
+
+  /* ── Background ── */
+  --arcade-bg-app: #000000;
+  --arcade-bg-standard: #3a3a3a;
+  --arcade-bg-prominent: #4d4d4d;
+  --arcade-bg-extra-prominent: #666666;
+  --arcade-bg-subtle: #1a1a1a;
+  --arcade-bg-inverse: #ffffff;
+  --arcade-bg-inverse-pressed: #999999;
+  --arcade-bg-warning: #cc4b03;
+  --arcade-bg-danger: #d3040e;
+  --arcade-bg-notification: #d7040e;
+  --arcade-bg-brand: #00e013;
+  --arcade-bg-keypad: #00e013;
+
+  /* ── Border ── */
+  --arcade-border-prominent: #ffffff;
+  --arcade-border-standard: #666666;
+  --arcade-border-subtle: #3a3a3a;
+  --arcade-border-inverse: #000000;
+  --arcade-border-app: #000000;
+  --arcade-border-warning: #cc4b03;
+  --arcade-border-danger: #d3040e;
+  --arcade-border-success: #00792c;
+  --arcade-border-brand: #00e013;
+
+  /* ── Data ── */
+  --arcade-data-trend-positive: #00e013;
+  --arcade-data-trend-negative: #ffffff;
+  --arcade-data-portion-full: #00e013;
+  --arcade-data-portion-empty: #3a3a3a;
+
+  /* ── UI Component ── */
+  --arcade-ui-dimmer: rgba(42, 42, 42, 0.65);
+}

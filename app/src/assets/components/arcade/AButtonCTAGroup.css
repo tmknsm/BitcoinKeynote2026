@@ -1,0 +1,58 @@
+@import '../../arcade-colors.css';
+@import '../../arcade-typography.css';
+
+/* ============================================================
+   AButtonCTAGroup — Arcade Design System CTA Button Group
+   A sticky bar for multiple CTAs at the bottom of a screen/flow.
+   ============================================================ */
+
+.a-button-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  background-color: var(--arcade-bg-app);
+}
+
+.a-button-cta-group__hairline {
+  width: 100%;
+  height: 1px;
+  background-color: var(--arcade-border-subtle);
+}
+
+.a-button-cta-group__content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  padding: 16px;
+}
+
+.a-button-cta-group__disclaimer {
+  font-family: var(--arcade-type-mono-font-family);
+  font-size: var(--arcade-type-detail-body-xs-size);
+  line-height: var(--arcade-type-detail-body-xs-line-height);
+  color: var(--arcade-text-subtle);
+  text-align: center;
+}
+
+.a-button-cta-group__buttons {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+}
+
+.a-button-cta-group__buttons--vertical {
+  flex-direction: column;
+}
+
+.a-button-cta-group__buttons--horizontal {
+  flex-direction: row;
+}
+
+/* In horizontal orientation, CTA buttons share space equally */
+.a-button-cta-group__buttons--horizontal > .a-button-cta {
+  flex: 1 0 0;
+  min-width: 0;
+}

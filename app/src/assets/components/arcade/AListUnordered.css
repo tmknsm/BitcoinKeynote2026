@@ -1,0 +1,112 @@
+@import '../../arcade-typography.css';
+@import '../../arcade-colors.css';
+
+/* ============================================================
+   AListUnordered — Arcade Design System Unordered List
+   Displays related content in a unified structure without
+   implying order. Supports 1 or 2 column layouts.
+   ============================================================ */
+
+.a-list-unordered {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 16px;
+  background: var(--arcade-bg-app);
+}
+
+/* ── Compact ── */
+
+.a-list-unordered--compact {
+  gap: 8px;
+}
+
+.a-list-unordered--compact.a-list-unordered--with-body {
+  gap: 16px;
+}
+
+/* ── Large ── */
+
+.a-list-unordered--large {
+  gap: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* ── Row ── */
+
+.a-list-unordered__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.a-list-unordered__leading {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Icon ── */
+
+.a-list-unordered__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--arcade-icon-standard);
+}
+
+/* ── Text ── */
+
+.a-list-unordered__text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.a-list-unordered__label {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-label-md-weight);
+  font-size: var(--arcade-type-body-label-md-size);
+  line-height: var(--arcade-type-body-label-md-line-height);
+  letter-spacing: var(--arcade-type-body-label-md-tracking);
+  color: var(--arcade-text-standard);
+}
+
+/* In 2-column mode, labels use regular weight */
+.a-list-unordered--two-col .a-list-unordered__label {
+  font-weight: var(--arcade-type-body-md-weight);
+  letter-spacing: var(--arcade-type-body-md-tracking);
+}
+
+.a-list-unordered__body {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-sm-weight);
+  font-size: var(--arcade-type-body-sm-size);
+  line-height: var(--arcade-type-body-sm-line-height);
+  letter-spacing: var(--arcade-type-body-sm-tracking);
+  color: var(--arcade-text-standard);
+}
+
+/* ── Value (2-column) ── */
+
+.a-list-unordered__value {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-label-md-weight);
+  font-size: var(--arcade-type-body-label-md-size);
+  line-height: var(--arcade-type-body-label-md-line-height);
+  letter-spacing: var(--arcade-type-body-label-md-tracking);
+  color: var(--arcade-text-standard);
+  text-align: right;
+  white-space: nowrap;
+  max-width: 125px;
+  flex-shrink: 0;
+  padding-left: 16px;
+}

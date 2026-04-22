@@ -1,0 +1,141 @@
+@import '../../arcade-typography.css';
+@import '../../arcade-colors.css';
+
+/* ============================================================
+   AButtonCTA — Arcade Design System CTA Button
+   Full-width, sticky primary action at the bottom of a screen/flow.
+   ============================================================ */
+
+.a-button-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 10000px;
+  cursor: pointer;
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 24px;
+  position: relative;
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-comp-button-weight);
+  font-size: var(--arcade-type-comp-button-size);
+  line-height: var(--arcade-type-comp-button-line-height);
+  letter-spacing: var(--arcade-type-comp-button-tracking);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.a-button-cta:focus-visible {
+  outline: 2px solid var(--arcade-border-brand);
+  outline-offset: 2px;
+}
+
+/* ── Prominent ── */
+
+.a-button-cta--prominent {
+  background-color: var(--arcade-bg-inverse);
+  color: var(--arcade-text-inverse);
+}
+.a-button-cta--prominent:active:not(:disabled) {
+  background-color: var(--arcade-bg-inverse-pressed);
+}
+
+/* ── Standard ── */
+
+.a-button-cta--standard {
+  background-color: var(--arcade-bg-standard);
+  color: var(--arcade-text-standard);
+}
+.a-button-cta--standard:active:not(:disabled) {
+  background-color: var(--arcade-bg-prominent);
+}
+
+/* ── Subtle ── */
+
+.a-button-cta--subtle {
+  background-color: transparent;
+  color: var(--arcade-text-standard);
+  text-decoration: underline;
+}
+.a-button-cta--subtle:active:not(:disabled) {
+  background-color: var(--arcade-bg-subtle);
+}
+
+/* ── Destructive Prominent ── */
+
+.a-button-cta--prominent.a-button-cta--destructive {
+  background-color: var(--arcade-bg-danger);
+  color: var(--arcade-text-inverse);
+}
+.a-button-cta--prominent.a-button-cta--destructive:active:not(:disabled) {
+  opacity: 0.8;
+}
+
+/* ── Destructive Standard ── */
+
+.a-button-cta--standard.a-button-cta--destructive {
+  background-color: var(--arcade-bg-standard);
+  color: var(--arcade-text-danger);
+}
+.a-button-cta--standard.a-button-cta--destructive:active:not(:disabled) {
+  background-color: var(--arcade-bg-prominent);
+}
+
+/* ── Destructive Subtle ── */
+
+.a-button-cta--subtle.a-button-cta--destructive {
+  color: var(--arcade-text-danger);
+}
+.a-button-cta--subtle.a-button-cta--destructive:active:not(:disabled) {
+  background-color: var(--arcade-bg-subtle);
+}
+
+/* ── Disabled ── */
+
+.a-button-cta:disabled {
+  cursor: not-allowed;
+  background-color: var(--arcade-bg-standard);
+  color: var(--arcade-text-disabled);
+  text-decoration: none;
+}
+.a-button-cta--subtle:disabled {
+  background-color: transparent;
+}
+
+/* ── Loading ── */
+
+.a-button-cta--loading {
+  pointer-events: none;
+}
+
+.a-button-cta--loading .a-button-cta__label,
+.a-button-cta--loading .a-button-cta__icon {
+  visibility: hidden;
+}
+
+.a-button-cta__spinner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: a-button-cta-spin 0.6s linear infinite;
+}
+
+@keyframes a-button-cta-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Icon ── */
+
+.a-button-cta__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}

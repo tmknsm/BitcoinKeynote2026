@@ -1,0 +1,105 @@
+@import '../../arcade-typography.css';
+@import '../../arcade-colors.css';
+
+/* ============================================================
+   ACell — Arcade Design System Cell
+   Full-width row with optional leading asset, text content,
+   and trailing accessory. Supports default, pressed, and
+   disabled states.
+   ============================================================ */
+
+.a-cell {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-width: 320px;
+  min-height: 56px;
+  padding: 16px;
+  background: var(--arcade-bg-app);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.a-cell[role='button'] {
+  cursor: pointer;
+}
+
+.a-cell--pressed {
+  background: var(--arcade-bg-prominent);
+}
+
+/* ── Asset slot ── */
+
+.a-cell__asset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.a-cell__image {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.a-cell__asset--disabled {
+  opacity: 0.3;
+}
+
+/* ── Main wrapper (text + accessory) ── */
+
+.a-cell__main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* ── Text slot ── */
+
+.a-cell__text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--arcade-text-standard);
+}
+
+.a-cell__text--disabled {
+  opacity: 0.3;
+}
+
+.a-cell__label {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-label-md-weight);
+  font-size: var(--arcade-type-body-label-md-size);
+  line-height: var(--arcade-type-body-label-md-line-height);
+  letter-spacing: var(--arcade-type-body-label-md-tracking);
+}
+
+.a-cell__body {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-sm-weight);
+  font-size: var(--arcade-type-body-sm-size);
+  line-height: var(--arcade-type-body-sm-line-height);
+  letter-spacing: var(--arcade-type-body-sm-tracking);
+}
+
+/* ── Accessory slot ── */
+
+.a-cell__accessory {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--arcade-icon-standard);
+}
+
+.a-cell__accessory--disabled {
+  opacity: 0.3;
+}

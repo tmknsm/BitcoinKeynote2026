@@ -1,0 +1,61 @@
+@import '../../arcade-typography.css';
+@import '../../arcade-colors.css';
+
+/* ============================================================
+   AHeaderPage — Arcade Design System Page Header
+   Header for full page views and formblocker screens, with
+   optional avatar and body text.
+   ============================================================ */
+
+.a-header-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  padding: 0 16px;
+  background: var(--arcade-bg-app);
+}
+
+/* ── Avatar ── */
+
+.a-header-page__avatar {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 1000px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--arcade-bg-standard);
+  color: var(--arcade-icon-standard);
+}
+
+/* ── Text ── */
+
+.a-header-page__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  color: var(--arcade-text-standard);
+}
+
+.a-header-page__title {
+  margin: 0;
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-display-page-title-weight);
+  font-size: var(--arcade-type-display-page-title-size);
+  line-height: var(--arcade-type-display-page-title-line-height);
+  letter-spacing: var(--arcade-type-display-page-title-tracking);
+}
+
+.a-header-page__body {
+  margin: 0;
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-md-weight);
+  font-size: var(--arcade-type-body-md-size);
+  line-height: var(--arcade-type-body-md-line-height);
+  letter-spacing: var(--arcade-type-body-md-tracking);
+  color: var(--arcade-text-subtle);
+}

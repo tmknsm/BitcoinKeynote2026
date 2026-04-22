@@ -1,0 +1,77 @@
+@import '../../arcade-typography.css';
+@import '../../arcade-colors.css';
+
+/* ============================================================
+   AInputChip — Arcade Design System Input Chip
+   A single-select container that lets users quickly choose
+   from a set of options (e.g. amount selection).
+   ============================================================ */
+
+.a-input-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 84px;
+  height: 64px;
+  padding: 20px 24px;
+  border: 1px solid var(--arcade-border-standard);
+  border-radius: 16px;
+  background-color: var(--arcade-bg-app);
+  cursor: pointer;
+  font-family: var(--arcade-type-font-family);
+  font-weight: 500;
+  font-size: var(--arcade-type-comp-button-size);
+  line-height: var(--arcade-type-comp-button-line-height);
+  letter-spacing: var(--arcade-type-comp-button-tracking);
+  color: var(--arcade-text-standard);
+  text-align: center;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.a-input-chip:focus-visible {
+  outline: 2px solid var(--arcade-border-brand);
+  outline-offset: 2px;
+}
+
+/* ── Pressed ── */
+
+.a-input-chip:active:not(:disabled) {
+  background-color: var(--arcade-bg-prominent);
+}
+
+/* ── Selected ── */
+
+.a-input-chip--selected {
+  border-width: 2px;
+  border-color: var(--arcade-border-prominent);
+  padding: 19px 23px; /* compensate for thicker border */
+}
+
+/* ── Disabled ── */
+
+.a-input-chip:disabled {
+  cursor: not-allowed;
+  background-color: var(--arcade-bg-subtle);
+  border-color: transparent;
+  color: var(--arcade-text-disabled);
+}
+
+/* ── Label ── */
+
+.a-input-chip__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Icon ── */
+
+.a-input-chip__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}

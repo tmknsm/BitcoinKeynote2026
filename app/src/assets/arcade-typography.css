@@ -1,0 +1,357 @@
+/* ============================================================
+   Arcade Typography Tokens — Cash Sans + Cash Sans Mono
+   Import: @import '@/assets/arcade-typography.css';
+
+   Cash Sans font-faces are declared in typography.css. Import that
+   file alongside this one, or ensure it is already loaded.
+   ============================================================ */
+
+/* --- Custom properties (atomic tokens) --- */
+
+:root {
+  --arcade-type-font-family: 'Cash Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --arcade-type-mono-font-family: 'Cash Sans Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* ── Display ── */
+
+  /* Display / Numeral large — largest numeric display */
+  --arcade-type-display-numeral-lg-weight: 500;
+  --arcade-type-display-numeral-lg-size: 56px;
+  --arcade-type-display-numeral-lg-line-height: 56px;
+  --arcade-type-display-numeral-lg-tracking: 0px;
+
+  /* Display / Numeral small — smaller numeric moments */
+  --arcade-type-display-numeral-sm-weight: 500;
+  --arcade-type-display-numeral-sm-size: 32px;
+  --arcade-type-display-numeral-sm-line-height: 32px;
+  --arcade-type-display-numeral-sm-tracking: 0px;
+
+  /* Display / Hero — largest non-numeric display */
+  --arcade-type-display-hero-weight: 400;
+  --arcade-type-display-hero-size: 56px;
+  --arcade-type-display-hero-line-height: 56px;
+  --arcade-type-display-hero-tracking: 0px;
+
+  /* Display / Headline large — editorial, brand-forward */
+  --arcade-type-display-headline-lg-weight: 400;
+  --arcade-type-display-headline-lg-size: 44px;
+  --arcade-type-display-headline-lg-line-height: 44px;
+  --arcade-type-display-headline-lg-tracking: -1.43px;
+
+  /* Display / Headline small — editorial in constrained spaces */
+  --arcade-type-display-headline-sm-weight: 400;
+  --arcade-type-display-headline-sm-size: 32px;
+  --arcade-type-display-headline-sm-line-height: 32px;
+  --arcade-type-display-headline-sm-tracking: 0px;
+
+  /* Display / Page title — primary page orientation */
+  --arcade-type-display-page-title-weight: 500;
+  --arcade-type-display-page-title-size: 32px;
+  --arcade-type-display-page-title-line-height: 32px;
+  --arcade-type-display-page-title-tracking: -0.48px;
+
+  /* Display / Section title — section headings */
+  --arcade-type-display-section-title-weight: 500;
+  --arcade-type-display-section-title-size: 24px;
+  --arcade-type-display-section-title-line-height: 24px;
+  --arcade-type-display-section-title-tracking: 0px;
+
+  /* ── Body ── */
+
+  /* Body / Label medium (Default) — single element labels */
+  --arcade-type-body-label-md-weight: 500;
+  --arcade-type-body-label-md-size: 16px;
+  --arcade-type-body-label-md-line-height: 24px;
+  --arcade-type-body-label-md-tracking: 0px;
+
+  /* Body / Label small */
+  --arcade-type-body-label-sm-weight: 500;
+  --arcade-type-body-label-sm-size: 14px;
+  --arcade-type-body-label-sm-line-height: 20px;
+  --arcade-type-body-label-sm-tracking: 0px;
+
+  /* Body / Body medium (Default) — short/long form content */
+  --arcade-type-body-md-weight: 400;
+  --arcade-type-body-md-size: 16px;
+  --arcade-type-body-md-line-height: 24px;
+  --arcade-type-body-md-tracking: 0px;
+
+  /* Body / Body small — short form in components */
+  --arcade-type-body-sm-weight: 400;
+  --arcade-type-body-sm-size: 14px;
+  --arcade-type-body-sm-line-height: 20px;
+  --arcade-type-body-sm-tracking: 0px;
+
+  /* Body / Link medium (Default) — links within body text */
+  --arcade-type-body-link-md-weight: 500;
+  --arcade-type-body-link-md-size: 16px;
+  --arcade-type-body-link-md-line-height: 24px;
+  --arcade-type-body-link-md-tracking: 0px;
+
+  /* Body / Link small */
+  --arcade-type-body-link-sm-weight: 500;
+  --arcade-type-body-link-sm-size: 14px;
+  --arcade-type-body-link-sm-line-height: 20px;
+  --arcade-type-body-link-sm-tracking: 0px;
+
+  /* ── Detail ── */
+
+  /* Detail / Label XS — mono, smallest label */
+  --arcade-type-detail-label-xs-weight: 500;
+  --arcade-type-detail-label-xs-size: 10px;
+  --arcade-type-detail-label-xs-line-height: 16px;
+  --arcade-type-detail-label-xs-tracking: 0.6px;
+
+  /* Detail / Body XS — legalese, disclaimers */
+  --arcade-type-detail-body-xs-weight: 400;
+  --arcade-type-detail-body-xs-size: 10px;
+  --arcade-type-detail-body-xs-line-height: 16px;
+  --arcade-type-detail-body-xs-tracking: 0px;
+
+  /* Detail / Link XS — links within disclaimer text */
+  --arcade-type-detail-link-xs-weight: 500;
+  --arcade-type-detail-link-xs-size: 10px;
+  --arcade-type-detail-link-xs-line-height: 16px;
+  --arcade-type-detail-link-xs-tracking: 0px;
+
+  /* ── Component ── */
+
+  /* Component / Keypad total */
+  --arcade-type-comp-keypad-total-weight: 500;
+  --arcade-type-comp-keypad-total-size: 96px;
+  --arcade-type-comp-keypad-total-line-height: 96px;
+  --arcade-type-comp-keypad-total-tracking: 0px;
+
+  /* Component / Keypad numbers */
+  --arcade-type-comp-keypad-numbers-weight: 400;
+  --arcade-type-comp-keypad-numbers-size: 24px;
+  --arcade-type-comp-keypad-numbers-line-height: 28px;
+  --arcade-type-comp-keypad-numbers-tracking: 0px;
+
+  /* Component / Card title large */
+  --arcade-type-comp-card-title-lg-weight: 500;
+  --arcade-type-comp-card-title-lg-size: 24px;
+  --arcade-type-comp-card-title-lg-line-height: 24px;
+  --arcade-type-comp-card-title-lg-tracking: 0px;
+
+  /* Component / Card title small */
+  --arcade-type-comp-card-title-sm-weight: 500;
+  --arcade-type-comp-card-title-sm-size: 16px;
+  --arcade-type-comp-card-title-sm-line-height: 20px;
+  --arcade-type-comp-card-title-sm-tracking: 0px;
+
+  /* Component / Button */
+  --arcade-type-comp-button-weight: 500;
+  --arcade-type-comp-button-size: 16px;
+  --arcade-type-comp-button-line-height: 24px;
+  --arcade-type-comp-button-tracking: 0px;
+
+  /* Component / Button compact */
+  --arcade-type-comp-button-compact-weight: 500;
+  --arcade-type-comp-button-compact-size: 14px;
+  --arcade-type-comp-button-compact-line-height: 16px;
+  --arcade-type-comp-button-compact-tracking: 0.035px;
+
+  /* Component / Badge large asset */
+  --arcade-type-comp-badge-lg-asset-weight: 400;
+  --arcade-type-comp-badge-lg-asset-size: 11px;
+  --arcade-type-comp-badge-lg-asset-line-height: 16px;
+  --arcade-type-comp-badge-lg-asset-tracking: 0px;
+}
+
+/* --- Utility classes --- */
+
+/* ── Display ── */
+
+.arcade-type-display-numeral-lg {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-display-numeral-lg-weight);
+  font-size: var(--arcade-type-display-numeral-lg-size);
+  line-height: var(--arcade-type-display-numeral-lg-line-height);
+  letter-spacing: var(--arcade-type-display-numeral-lg-tracking);
+}
+
+.arcade-type-display-numeral-sm {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-display-numeral-sm-weight);
+  font-size: var(--arcade-type-display-numeral-sm-size);
+  line-height: var(--arcade-type-display-numeral-sm-line-height);
+  letter-spacing: var(--arcade-type-display-numeral-sm-tracking);
+}
+
+.arcade-type-display-hero {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-display-hero-weight);
+  font-size: var(--arcade-type-display-hero-size);
+  line-height: var(--arcade-type-display-hero-line-height);
+  letter-spacing: var(--arcade-type-display-hero-tracking);
+}
+
+.arcade-type-display-headline-lg {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-display-headline-lg-weight);
+  font-size: var(--arcade-type-display-headline-lg-size);
+  line-height: var(--arcade-type-display-headline-lg-line-height);
+  letter-spacing: var(--arcade-type-display-headline-lg-tracking);
+}
+
+.arcade-type-display-headline-sm {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-display-headline-sm-weight);
+  font-size: var(--arcade-type-display-headline-sm-size);
+  line-height: var(--arcade-type-display-headline-sm-line-height);
+  letter-spacing: var(--arcade-type-display-headline-sm-tracking);
+}
+
+.arcade-type-display-page-title {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-display-page-title-weight);
+  font-size: var(--arcade-type-display-page-title-size);
+  line-height: var(--arcade-type-display-page-title-line-height);
+  letter-spacing: var(--arcade-type-display-page-title-tracking);
+}
+
+.arcade-type-display-section-title {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-display-section-title-weight);
+  font-size: var(--arcade-type-display-section-title-size);
+  line-height: var(--arcade-type-display-section-title-line-height);
+  letter-spacing: var(--arcade-type-display-section-title-tracking);
+}
+
+/* ── Body ── */
+
+.arcade-type-body-label-md {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-label-md-weight);
+  font-size: var(--arcade-type-body-label-md-size);
+  line-height: var(--arcade-type-body-label-md-line-height);
+  letter-spacing: var(--arcade-type-body-label-md-tracking);
+}
+
+.arcade-type-body-label-sm {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-label-sm-weight);
+  font-size: var(--arcade-type-body-label-sm-size);
+  line-height: var(--arcade-type-body-label-sm-line-height);
+  letter-spacing: var(--arcade-type-body-label-sm-tracking);
+}
+
+.arcade-type-body-md {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-md-weight);
+  font-size: var(--arcade-type-body-md-size);
+  line-height: var(--arcade-type-body-md-line-height);
+  letter-spacing: var(--arcade-type-body-md-tracking);
+}
+
+.arcade-type-body-sm {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-sm-weight);
+  font-size: var(--arcade-type-body-sm-size);
+  line-height: var(--arcade-type-body-sm-line-height);
+  letter-spacing: var(--arcade-type-body-sm-tracking);
+}
+
+.arcade-type-body-link-md {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-link-md-weight);
+  font-size: var(--arcade-type-body-link-md-size);
+  line-height: var(--arcade-type-body-link-md-line-height);
+  letter-spacing: var(--arcade-type-body-link-md-tracking);
+  text-decoration: underline;
+}
+
+.arcade-type-body-link-sm {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-link-sm-weight);
+  font-size: var(--arcade-type-body-link-sm-size);
+  line-height: var(--arcade-type-body-link-sm-line-height);
+  letter-spacing: var(--arcade-type-body-link-sm-tracking);
+  text-decoration: underline;
+}
+
+/* ── Detail ── */
+
+.arcade-type-detail-label-xs {
+  font-family: var(--arcade-type-mono-font-family);
+  font-weight: var(--arcade-type-detail-label-xs-weight);
+  font-size: var(--arcade-type-detail-label-xs-size);
+  line-height: var(--arcade-type-detail-label-xs-line-height);
+  letter-spacing: var(--arcade-type-detail-label-xs-tracking);
+}
+
+.arcade-type-detail-body-xs {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-detail-body-xs-weight);
+  font-size: var(--arcade-type-detail-body-xs-size);
+  line-height: var(--arcade-type-detail-body-xs-line-height);
+  letter-spacing: var(--arcade-type-detail-body-xs-tracking);
+}
+
+.arcade-type-detail-link-xs {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-detail-link-xs-weight);
+  font-size: var(--arcade-type-detail-link-xs-size);
+  line-height: var(--arcade-type-detail-link-xs-line-height);
+  letter-spacing: var(--arcade-type-detail-link-xs-tracking);
+  text-decoration: underline;
+}
+
+/* ── Component ── */
+
+.arcade-type-comp-keypad-total {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-comp-keypad-total-weight);
+  font-size: var(--arcade-type-comp-keypad-total-size);
+  line-height: var(--arcade-type-comp-keypad-total-line-height);
+  letter-spacing: var(--arcade-type-comp-keypad-total-tracking);
+}
+
+.arcade-type-comp-keypad-numbers {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-comp-keypad-numbers-weight);
+  font-size: var(--arcade-type-comp-keypad-numbers-size);
+  line-height: var(--arcade-type-comp-keypad-numbers-line-height);
+  letter-spacing: var(--arcade-type-comp-keypad-numbers-tracking);
+}
+
+.arcade-type-comp-card-title-lg {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-comp-card-title-lg-weight);
+  font-size: var(--arcade-type-comp-card-title-lg-size);
+  line-height: var(--arcade-type-comp-card-title-lg-line-height);
+  letter-spacing: var(--arcade-type-comp-card-title-lg-tracking);
+}
+
+.arcade-type-comp-card-title-sm {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-comp-card-title-sm-weight);
+  font-size: var(--arcade-type-comp-card-title-sm-size);
+  line-height: var(--arcade-type-comp-card-title-sm-line-height);
+  letter-spacing: var(--arcade-type-comp-card-title-sm-tracking);
+}
+
+.arcade-type-comp-button {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-comp-button-weight);
+  font-size: var(--arcade-type-comp-button-size);
+  line-height: var(--arcade-type-comp-button-line-height);
+  letter-spacing: var(--arcade-type-comp-button-tracking);
+}
+
+.arcade-type-comp-button-compact {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-comp-button-compact-weight);
+  font-size: var(--arcade-type-comp-button-compact-size);
+  line-height: var(--arcade-type-comp-button-compact-line-height);
+  letter-spacing: var(--arcade-type-comp-button-compact-tracking);
+}
+
+.arcade-type-comp-badge-lg-asset {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-comp-badge-lg-asset-weight);
+  font-size: var(--arcade-type-comp-badge-lg-asset-size);
+  line-height: var(--arcade-type-comp-badge-lg-asset-line-height);
+  letter-spacing: var(--arcade-type-comp-badge-lg-asset-tracking);
+}

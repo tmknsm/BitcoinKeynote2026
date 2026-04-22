@@ -1,0 +1,16 @@
+/* ============================================================
+   AInputChipGrid — Arcade Design System Input Chip Grid
+   A grouped 3-column layout for input-chip components.
+   ============================================================ */
+
+.a-input-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.a-input-chip-grid > .a-input-chip {
+  width: 100%;
+  min-width: 0;
+}

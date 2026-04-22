@@ -1,0 +1,102 @@
+@import '../../arcade-typography.css';
+@import '../../arcade-colors.css';
+
+/* ============================================================
+   ATitleBarSub — Arcade Design System Sub Title Bar
+   Top bar for non-primary-tab screens with navigation,
+   optional title, and trailing action icons.
+   ============================================================ */
+
+.a-title-bar-sub {
+  width: 100%;
+  min-width: 375px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  background: var(--arcade-bg-app);
+}
+
+.a-title-bar-sub__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+/* ── Title (absolutely centered) ── */
+
+.a-title-bar-sub__title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-label-md-weight);
+  font-size: var(--arcade-type-body-label-md-size);
+  line-height: var(--arcade-type-body-label-md-line-height);
+  letter-spacing: var(--arcade-type-body-label-md-tracking);
+  color: var(--arcade-text-standard);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ── Icon buttons (shared) ── */
+
+.a-title-bar-sub__nav-btn,
+.a-title-bar-sub__action-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  color: var(--arcade-icon-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.a-title-bar-sub__nav-btn {
+  margin-left: -10px;
+}
+
+/* ── Default variant ── */
+
+.a-title-bar-sub--default .a-title-bar-sub__nav-btn,
+.a-title-bar-sub--default .a-title-bar-sub__action-btn {
+  background: transparent;
+}
+
+.a-title-bar-sub--default .a-title-bar-sub__nav-btn:active,
+.a-title-bar-sub--default .a-title-bar-sub__action-btn:active {
+  background: var(--arcade-bg-subtle);
+}
+
+/* ── Transparent variant (blurred pills) ── */
+
+.a-title-bar-sub--transparent .a-title-bar-sub__nav-btn,
+.a-title-bar-sub--transparent .a-title-bar-sub__action-btn {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.dark .a-title-bar-sub--transparent .a-title-bar-sub__nav-btn,
+.dark .a-title-bar-sub--transparent .a-title-bar-sub__action-btn {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.a-title-bar-sub--transparent .a-title-bar-sub__nav-btn:active,
+.a-title-bar-sub--transparent .a-title-bar-sub__action-btn:active {
+  opacity: 0.7;
+}
+
+/* ── Actions group ── */
+
+.a-title-bar-sub__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}

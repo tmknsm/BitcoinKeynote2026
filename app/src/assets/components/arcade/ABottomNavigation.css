@@ -1,0 +1,163 @@
+@import '../../arcade-colors.css';
+@import '../../arcade-typography.css';
+
+/* ============================================================
+   ABottomNavigation — Arcade Design System Bottom Navigation
+   Variants: standard, glass (liquid glass, auto light/dark)
+   ============================================================ */
+
+.a-bottom-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* ── Standard variant ── */
+
+.a-bottom-nav--standard {
+  background-color: var(--arcade-bg-app);
+  border-top: 1px solid var(--arcade-border-subtle);
+}
+
+.a-bottom-nav__tabs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 16px;
+  overflow: clip;
+}
+
+/* ── Glass variant ── */
+
+.a-bottom-nav--glass {
+  background: transparent;
+}
+
+.a-bottom-nav__glass-pill {
+  position: relative;
+  display: inline-flex;
+  align-self: center;
+}
+
+.a-bottom-nav__glass-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 296px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.a-bottom-nav__glass-blur {
+  position: absolute;
+  inset: 0;
+  border-radius: 296px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Glass light fill */
+.a-bottom-nav__glass-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 296px;
+  background: linear-gradient(90deg, #f7f7f7, #f7f7f7), linear-gradient(90deg, rgba(255,255,255,0.65), rgba(255,255,255,0.65));
+  mix-blend-mode: color-dodge;
+}
+
+.a-bottom-nav__glass-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 296px;
+  background-color: rgba(255, 255, 255, 0.37);
+}
+
+/* Glass dark fill — auto via .dark ancestor */
+.dark .a-bottom-nav__glass-fill {
+  background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.1)), linear-gradient(90deg, rgba(204,204,204,0.4), rgba(204,204,204,0.4));
+  mix-blend-mode: normal;
+}
+
+.dark .a-bottom-nav__glass-overlay {
+  background-color: rgba(27, 27, 27, 0.57);
+}
+
+.a-bottom-nav__glass-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.a-bottom-nav__glass-tabs .a-bottom-nav__tab {
+  flex: none;
+  padding: 14px 24px;
+  border-radius: 100px;
+}
+
+.a-bottom-nav__glass-tabs .a-bottom-nav__tab--active {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.dark .a-bottom-nav__glass-tabs .a-bottom-nav__tab {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark .a-bottom-nav__glass-tabs .a-bottom-nav__tab--active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Tab (shared base) ── */
+
+.a-bottom-nav__tab {
+  flex: 1 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 0;
+  min-width: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--arcade-text-disabled);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.a-bottom-nav__tab--active {
+  color: var(--arcade-text-standard);
+}
+
+.a-bottom-nav__balance {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-display-section-title-weight);
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 3px 0;
+}
+
+/* ── Home indicator ── */
+
+.a-bottom-nav__home-indicator {
+  height: 34px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+
+.a-bottom-nav__home-indicator-bar {
+  width: 144px;
+  height: 5px;
+  border-radius: 100px;
+  background-color: var(--arcade-text-standard);
+}

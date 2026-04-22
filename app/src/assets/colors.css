@@ -1,0 +1,462 @@
+/* ============================================================
+   Color Tokens
+   Import: @import '@/assets/colors.css';
+   Usage:  color: var(--color-text-10);  background: var(--color-surface-10);
+
+   Light mode is default. Dark mode activates via .dark class on
+   an ancestor, controlled by the hub's light/dark toggle.
+   ============================================================ */
+
+/* --- Light mode (default) --- */
+
+:root {
+
+  /* ── Text ── */
+  --color-text-10: #000000E6;
+  --color-text-20: #0000008C;
+  --color-text-30: #0000004D;
+  --color-text-black: #000000E6;
+  --color-text-white: #FFFFFF;
+  --color-text-double-white: #FFFFFF;
+  --color-text-inverse: #FFFFFFF2;
+
+  /* ── Fill ── */
+  --color-fill-clear: #00000000;
+  --color-fill-10: #000000E6;
+  --color-fill-20: #0000006B;
+  --color-fill-30: #00000026;
+  --color-fill-40: #0000000D;
+  --color-fill-50: #F7F7F7;
+  --color-fill-black: #000000;
+  --color-fill-white: #FFFFFF;
+  --color-fill-double-white: #FFFFFF;
+  --color-fill-inverse: #FFFFFFF2;
+
+  /* ── Divider ── */
+  --color-divider-10: #0000004D;
+  --color-divider-20: #0000000D;
+
+  /* ── Surface ── */
+  --color-surface-5: #FFFFFF;
+  --color-surface-10: #FFFFFF;
+  --color-surface-20: #FFFFFF;
+  --color-surface-30: #FFFFFF;
+  --color-surface-overlay: #000000CC;
+  --color-surface-inverse: #1A1A1A;
+  --color-surface-gray: #F7F7F7;
+  --color-surface-solid: #F2F2F2;
+  --color-button-hover: #E8E8E8;
+
+  /* ── Emphasis (default: black) ── */
+  --color-emphasis-fill: #000000;
+  --color-emphasis-text: #000000E6;
+  --color-emphasis-10: #000000E6;
+  --color-emphasis-20: #0000006B;
+  --color-emphasis-30: #00000026;
+  --color-emphasis-40: #0000000D;
+
+  /* ── Success ── */
+  --color-success-fill: #00B23B;
+  --color-success-text: #007D2A;
+  --color-success-10: #00802A;
+  --color-success-20: #009933;
+  --color-success-30: #CCFFDD;
+  --color-success-40: #E5FFEE;
+
+  /* ── Warning ── */
+  --color-warning-fill: #FF9F40;
+  --color-warning-text: #945C25;
+  --color-warning-10: #CC8033;
+  --color-warning-20: #E58F39;
+  --color-warning-30: #FFE5CC;
+  --color-warning-40: #FFF2E5;
+
+  /* ── Critical ── */
+  --color-critical-fill: #CC0023;
+  --color-critical-text: #BF0020;
+  --color-critical-10: #99001A;
+  --color-critical-20: #B2001E;
+  --color-critical-30: #FFCCD5;
+  --color-critical-40: #FFE5EA;
+
+  /* ── Extended Colors ── */
+
+  /* Burgundy */
+  --color-burgundy-fill: #990838;
+  --color-burgundy-text: #990838;
+  --color-burgundy-10: #660525;
+  --color-burgundy-20: #80062F;
+  --color-burgundy-30: #FFCCDD;
+  --color-burgundy-40: #FFE5EA;
+
+  /* Red */
+  --color-red-fill: #CC0023;
+  --color-red-text: #BF0020;
+  --color-red-10: #99001A;
+  --color-red-20: #B2001E;
+  --color-red-30: #FFCCD5;
+  --color-red-40: #FFE5EA;
+
+  /* Orange */
+  --color-orange-fill: #F25B3D;
+  --color-orange-text: #A83F2A;
+  --color-orange-10: #BF4830;
+  --color-orange-20: #DB5237;
+  --color-orange-30: #FFD4CC;
+  --color-orange-40: #FFEAE5;
+
+  /* Gold */
+  --color-gold-fill: #FF9F40;
+  --color-gold-text: #945C25;
+  --color-gold-10: #CC8033;
+  --color-gold-20: #E58F39;
+  --color-gold-30: #FFE5CC;
+  --color-gold-40: #FFF2E5;
+
+  /* Yellow */
+  --color-yellow-fill: #FFBF00;
+  --color-yellow-text: #876500;
+  --color-yellow-10: #FFF2E5;
+  --color-yellow-20: #E5AC00;
+  --color-yellow-30: #FFF2CC;
+  --color-yellow-40: #FFF9E5;
+
+  /* Taupe */
+  --color-taupe-fill: #A67C53;
+  --color-taupe-text: #826141;
+  --color-taupe-10: #735639;
+  --color-taupe-20: #8C6946;
+  --color-taupe-30: #FFE5CC;
+  --color-taupe-40: #FFF2E5;
+
+  /* Brown */
+  --color-brown-fill: #664A2E;
+  --color-brown-text: #664A2E;
+  --color-brown-10: #332517;
+  --color-brown-20: #4D3722;
+  --color-brown-30: #FFE5CC;
+  --color-brown-40: #FFF2E5;
+
+  /* Forest */
+  --color-forest-fill: #19802A;
+  --color-forest-text: #007D2A;
+  --color-forest-10: #0F4D19;
+  --color-forest-20: #146622;
+  --color-forest-30: #CCFFD4;
+  --color-forest-40: #E5FFEA;
+
+  /* Green */
+  --color-green-fill: #00B23B;
+  --color-green-text: #007D2A;
+  --color-green-10: #00802A;
+  --color-green-20: #009933;
+  --color-green-30: #E5FFEA;
+  --color-green-40: #E5FFEE;
+
+  /* Teal */
+  --color-teal-fill: #12BF94;
+  --color-teal-text: #0C785D;
+  --color-teal-10: #0D8C6D;
+  --color-teal-20: #10A680;
+  --color-teal-30: #CCFFF2;
+  --color-teal-40: #E5FFF9;
+
+  /* Blue */
+  --color-blue-fill: #006AFF;
+  --color-blue-text: #005AD9;
+  --color-blue-10: #0055CC;
+  --color-blue-20: #005FE5;
+  --color-blue-30: #CCE1FF;
+  --color-blue-40: #E5F0FF;
+
+  /* Sky */
+  --color-sky-fill: #2693FF;
+  --color-sky-text: #0F65BA;
+  --color-sky-10: #1F75CC;
+  --color-sky-20: #2284E5;
+  --color-sky-30: #CCE6FF;
+  --color-sky-40: #E5F2FF;
+
+  /* Purple */
+  --color-purple-fill: #8716D9;
+  --color-purple-text: #8716D9;
+  --color-purple-10: #6811A6;
+  --color-purple-20: #7813BF;
+  --color-purple-30: #EACCFF;
+  --color-purple-40: #F4E5FF;
+
+  /* Pink */
+  --color-pink-fill: #D936B0;
+  --color-pink-text: #A82A88;
+  --color-pink-10: #A62987;
+  --color-pink-20: #BF309B;
+  --color-pink-30: #FFCCF2;
+  --color-pink-40: #FFE5F9;
+
+  /* ── Static (no light/dark variant) ── */
+  --color-bitcoin-orange: #FF671F;
+}
+
+/* --- Dark mode (triggered by .dark class from hub toggle) --- */
+
+.dark {
+
+    /* ── Text ── */
+    --color-text-10: #FFFFFFF2;
+    --color-text-20: #FFFFFF8C;
+    --color-text-30: #FFFFFF4D;
+    --color-text-black: #FFFFFF;
+    --color-text-white: #FFFFFF;
+    --color-text-double-white: #FFFFFF;
+    --color-text-inverse: #000000E6;
+
+    /* ── Fill ── */
+    --color-fill-clear: #00000000;
+    --color-fill-10: #FFFFFFF2;
+    --color-fill-20: #FFFFFF59;
+    --color-fill-30: #FFFFFF26;
+    --color-fill-40: #FFFFFF14;
+    --color-fill-50: #2A2A2A;
+    --color-fill-black: #FFFFFF;
+    --color-fill-white: #000000;
+    --color-fill-double-white: #FFFFFF;
+    --color-fill-inverse: #000000E6;
+
+    /* ── Divider ── */
+    --color-divider-10: #FFFFFF4D;
+    --color-divider-20: #FFFFFF14;
+
+    /* ── Surface ── */
+    --color-surface-5: #080808;
+    --color-surface-10: #141414;
+    --color-surface-20: #1C1C1C;
+    --color-surface-30: #080808;
+    --color-surface-overlay: #000000CC;
+    --color-surface-inverse: #FFFFFF;
+    --color-surface-gray: #0D0D0D;
+    --color-surface-solid: #1C1C1C;
+    --color-button-hover: #595959;
+
+    /* ── Emphasis (default: black) ── */
+    --color-emphasis-fill: #FFFFFF;
+    --color-emphasis-text: #FFFFFFF2;
+    --color-emphasis-10: #FFFFFFF2;
+    --color-emphasis-20: #FFFFFF59;
+    --color-emphasis-30: #FFFFFF26;
+    --color-emphasis-40: #FFFFFF14;
+
+    /* ── Success ── */
+    --color-success-fill: #00B33B;
+    --color-success-text: #16D956;
+    --color-success-10: #00802A;
+    --color-success-20: #009933;
+    --color-success-30: #00591E;
+    --color-success-40: #003311;
+
+    /* ── Warning ── */
+    --color-warning-fill: #FF9F40;
+    --color-warning-text: #FF9F40;
+    --color-warning-10: #CC8033;
+    --color-warning-20: #E58F39;
+    --color-warning-30: #592D00;
+    --color-warning-40: #331A00;
+
+    /* ── Critical ── */
+    --color-critical-fill: #CC0023;
+    --color-critical-text: #FF5A76;
+    --color-critical-10: #99001A;
+    --color-critical-20: #B2001E;
+    --color-critical-30: #59000F;
+    --color-critical-40: #330009;
+
+    /* ── Extended Colors ── */
+
+  /* Burgundy */
+    --color-burgundy-fill: #990838;
+    --color-burgundy-text: #FF568E;
+    --color-burgundy-10: #660525;
+    --color-burgundy-20: #80062F;
+    --color-burgundy-30: #59001E;
+    --color-burgundy-40: #330011;
+
+    /* Red */
+    --color-red-fill: #CC0023;
+    --color-red-text: #FF5A76;
+    --color-red-10: #99001A;
+    --color-red-20: #B2001E;
+    --color-red-30: #59000F;
+    --color-red-40: #330009;
+
+    /* Orange */
+    --color-orange-fill: #F25B3D;
+    --color-orange-text: #FF5F3F;
+    --color-orange-10: #BF4830;
+    --color-orange-20: #DB5237;
+    --color-orange-30: #590F00;
+    --color-orange-40: #330800;
+
+    /* Gold */
+    --color-gold-fill: #FF9F40;
+    --color-gold-text: #FF9F40;
+    --color-gold-10: #CC8033;
+    --color-gold-20: #E58F39;
+    --color-gold-30: #592D00;
+    --color-gold-40: #331A00;
+
+    /* Yellow */
+    --color-yellow-fill: #FFBF00;
+    --color-yellow-text: #FFBF00;
+    --color-yellow-10: #CC9900;
+    --color-yellow-20: #E5AC00;
+    --color-yellow-30: #594300;
+    --color-yellow-40: #332600;
+
+    /* Taupe */
+    --color-taupe-fill: #A67C53;
+    --color-taupe-text: #C99866;
+    --color-taupe-10: #735639;
+    --color-taupe-20: #8C6946;
+    --color-taupe-30: #592D00;
+    --color-taupe-40: #331A00;
+
+    /* Brown */
+    --color-brown-fill: #664D33;
+    --color-brown-text: #C99866;
+    --color-brown-10: #332517;
+    --color-brown-20: #4D3722;
+    --color-brown-30: #592D00;
+    --color-brown-40: #331900;
+
+    /* Forest */
+    --color-forest-fill: #19802A;
+    --color-forest-text: #16D956;
+    --color-forest-10: #0F4D19;
+    --color-forest-20: #146622;
+    --color-forest-30: #00590F;
+    --color-forest-40: #003308;
+
+    /* Green */
+    --color-green-fill: #00B23B;
+    --color-green-text: #16D956;
+    --color-green-10: #00802A;
+    --color-green-20: #009933;
+    --color-green-30: #00591E;
+    --color-green-40: #003311;
+
+    /* Teal */
+    --color-teal-fill: #12BF94;
+    --color-teal-text: #16D8A7;
+    --color-teal-10: #0D8C6D;
+    --color-teal-20: #10A680;
+    --color-teal-30: #005943;
+    --color-teal-40: #003326;
+
+    /* Blue */
+    --color-blue-fill: #006AFF;
+    --color-blue-text: #4A95FF;
+    --color-blue-10: #0055CC;
+    --color-blue-20: #005FE5;
+    --color-blue-30: #002559;
+    --color-blue-40: #001533;
+
+    /* Sky */
+    --color-sky-fill: #2693FF;
+    --color-sky-text: #2E97FF;
+    --color-sky-10: #1F75CC;
+    --color-sky-20: #2284E5;
+    --color-sky-30: #002D59;
+    --color-sky-40: #001A33;
+
+    /* Purple */
+    --color-purple-fill: #8716D9;
+    --color-purple-text: #C26EFF;
+    --color-purple-10: #6811A6;
+    --color-purple-20: #7813BF;
+    --color-purple-30: #340059;
+    --color-purple-40: #1E0033;
+
+    /* Pink */
+    --color-pink-fill: #D936B0;
+    --color-pink-text: #FF43D0;
+    --color-pink-10: #A62987;
+    --color-pink-20: #BF309B;
+    --color-pink-30: #590043;
+    --color-pink-40: #330026;
+}
+
+/* --- Forced overrides for vibe isolation --- */
+/* Use .force-light or .force-dark on a wrapper to override inherited tokens */
+
+.force-light {
+  --color-text-10: #000000E6;
+  --color-text-20: #0000008C;
+  --color-text-30: #0000004D;
+  --color-text-black: #000000E6;
+  --color-text-white: #FFFFFF;
+  --color-text-double-white: #FFFFFF;
+  --color-text-inverse: #FFFFFFF2;
+  --color-fill-clear: #00000000;
+  --color-fill-10: #000000E6;
+  --color-fill-20: #0000006B;
+  --color-fill-30: #00000026;
+  --color-fill-40: #0000000D;
+  --color-fill-50: #F7F7F7;
+  --color-fill-black: #000000;
+  --color-fill-white: #FFFFFF;
+  --color-fill-double-white: #FFFFFF;
+  --color-fill-inverse: #FFFFFFF2;
+  --color-divider-10: #0000004D;
+  --color-divider-20: #0000000D;
+  --color-surface-5: #FFFFFF;
+  --color-surface-10: #FFFFFF;
+  --color-surface-20: #FFFFFF;
+  --color-surface-30: #FFFFFF;
+  --color-surface-overlay: #000000CC;
+  --color-surface-inverse: #1A1A1A;
+  --color-surface-gray: #F7F7F7;
+  --color-surface-solid: #F2F2F2;
+  --color-button-hover: #E8E8E8;
+  --color-emphasis-fill: #000000;
+  --color-emphasis-text: #000000E6;
+  --color-emphasis-10: #000000E6;
+  --color-emphasis-20: #0000006B;
+  --color-emphasis-30: #00000026;
+  --color-emphasis-40: #0000000D;
+}
+
+.force-dark {
+  --color-text-10: #FFFFFFF2;
+  --color-text-20: #FFFFFF8C;
+  --color-text-30: #FFFFFF4D;
+  --color-text-black: #FFFFFF;
+  --color-text-white: #FFFFFF;
+  --color-text-double-white: #FFFFFF;
+  --color-text-inverse: #000000E6;
+  --color-fill-clear: #00000000;
+  --color-fill-10: #FFFFFFF2;
+  --color-fill-20: #FFFFFF59;
+  --color-fill-30: #FFFFFF26;
+  --color-fill-40: #FFFFFF14;
+  --color-fill-50: #2A2A2A;
+  --color-fill-black: #FFFFFF;
+  --color-fill-white: #000000;
+  --color-fill-double-white: #FFFFFF;
+  --color-fill-inverse: #000000E6;
+  --color-divider-10: #FFFFFF4D;
+  --color-divider-20: #FFFFFF14;
+  --color-surface-5: #080808;
+  --color-surface-10: #141414;
+  --color-surface-20: #1C1C1C;
+  --color-surface-30: #080808;
+  --color-surface-overlay: #000000CC;
+  --color-surface-inverse: #FFFFFF;
+  --color-surface-gray: #0D0D0D;
+  --color-surface-solid: #1C1C1C;
+  --color-button-hover: #595959;
+  --color-emphasis-fill: #FFFFFF;
+  --color-emphasis-text: #FFFFFFF2;
+  --color-emphasis-10: #FFFFFFF2;
+  --color-emphasis-20: #FFFFFF59;
+  --color-emphasis-30: #FFFFFF26;
+  --color-emphasis-40: #FFFFFF14;
+}

@@ -1,0 +1,296 @@
+@import '../assets/arcade-typography.css';
+@import '../assets/arcade-colors.css';
+
+.send-btc-proto {
+  font-family: var(--arcade-type-font-family);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--arcade-bg-app);
+  color: var(--arcade-text-standard);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
+.send-btc-sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--arcade-bg-app);
+  flex-shrink: 0;
+}
+
+.send-btc-status-bar {
+  height: 47px;
+}
+
+.send-btc-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Hero header ── */
+
+.send-btc-hero {
+  padding: 0 16px;
+}
+
+.send-btc-hero__section-title {
+  margin: 0 0 8px;
+  font-weight: var(--arcade-type-display-section-title-weight);
+  font-size: var(--arcade-type-display-section-title-size);
+  line-height: var(--arcade-type-display-section-title-line-height);
+  letter-spacing: var(--arcade-type-display-section-title-tracking);
+  color: var(--arcade-text-standard);
+}
+
+.send-btc-hero__numeral {
+  margin: 0;
+  font-weight: var(--arcade-type-display-numeral-lg-weight);
+  font-size: var(--arcade-type-display-numeral-lg-size);
+  line-height: var(--arcade-type-display-numeral-lg-line-height);
+  letter-spacing: var(--arcade-type-display-numeral-lg-tracking);
+  color: var(--arcade-text-standard);
+}
+
+.send-btc-hero__body {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.send-btc-hero__body-text {
+  font-weight: var(--arcade-type-body-md-weight);
+  font-size: var(--arcade-type-body-md-size);
+  line-height: var(--arcade-type-body-md-line-height);
+  color: var(--arcade-text-standard);
+}
+
+/* ── Price change ── */
+
+.send-btc-price {
+  padding: 0 16px;
+}
+
+.send-btc-price__row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.send-btc-price__label {
+  font-weight: var(--arcade-type-body-label-md-weight);
+  font-size: var(--arcade-type-body-label-md-size);
+  line-height: var(--arcade-type-body-label-md-line-height);
+  color: var(--arcade-text-standard);
+}
+
+.send-btc-price__usd {
+  font-weight: var(--arcade-type-body-label-md-weight);
+  font-size: var(--arcade-type-body-label-md-size);
+  line-height: var(--arcade-type-body-label-md-line-height);
+  color: var(--arcade-text-standard);
+}
+
+/* ── Chart ── */
+
+.send-btc-chart {
+  height: 140px;
+  padding: 0 2px;
+}
+
+.send-btc-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Filter chips ── */
+
+.send-btc-filters {
+  display: flex;
+  justify-content: center;
+}
+
+.send-btc-filters__bar {
+  display: flex;
+  gap: 8px;
+  width: 311px;
+}
+
+.send-btc-filters__chip {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: none;
+  font-family: var(--arcade-type-font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.035px;
+  color: var(--arcade-text-standard);
+  background: transparent;
+  cursor: pointer;
+}
+
+.send-btc-filters__chip--active {
+  background: var(--arcade-bg-subtle);
+}
+
+/* ── Buttons ── */
+
+.send-btc-buttons {}
+
+/* ── Spacers ── */
+
+.send-btc-spacer-32 { height: 32px; flex-shrink: 0; }
+.send-btc-spacer-48 { height: 48px; flex-shrink: 0; }
+
+/* ── Section header ── */
+
+.send-btc-section-header {
+  padding: 0 16px;
+}
+
+.send-btc-section-header__title {
+  margin: 0;
+  font-weight: var(--arcade-type-display-section-title-weight);
+  font-size: var(--arcade-type-display-section-title-size);
+  line-height: var(--arcade-type-display-section-title-line-height);
+  letter-spacing: var(--arcade-type-display-section-title-tracking);
+  color: var(--arcade-text-standard);
+}
+
+.send-btc-section-header__body {
+  margin: 4px 0 0;
+  font-weight: var(--arcade-type-body-sm-weight);
+  font-size: var(--arcade-type-body-sm-size);
+  line-height: var(--arcade-type-body-sm-line-height);
+  color: var(--arcade-text-subtle);
+}
+
+/* ── Divider ── */
+
+.send-btc-divider {
+  height: 1px;
+  margin: 24px 16px;
+  background: var(--arcade-border-subtle);
+}
+
+/* ── Cell avatar ── */
+
+.send-btc-cell-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--arcade-bg-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--arcade-icon-inverse);
+  flex-shrink: 0;
+}
+
+/* ── Sheet height override — allow near-full screen ── */
+
+.send-btc-flow-sheet.a-sheet--hug {
+  max-height: calc(100% - 47px);
+}
+
+/* ── Bottom nav spacer ── */
+
+.send-btc-nav-spacer {
+  height: 83px;
+  flex-shrink: 0;
+}
+
+/* ── Keypad (inside sheet) ── */
+
+.send-btc-keypad-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.send-btc-keypad__amount {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.send-btc-keypad__btc {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-comp-keypad-total-weight);
+  font-size: var(--arcade-type-comp-keypad-total-size);
+  line-height: var(--arcade-type-comp-keypad-total-line-height);
+  letter-spacing: var(--arcade-type-comp-keypad-total-tracking);
+  color: var(--arcade-text-standard);
+}
+
+.send-btc-keypad__usd {
+  font-family: var(--arcade-type-font-family);
+  font-weight: var(--arcade-type-body-label-md-weight);
+  font-size: var(--arcade-type-body-label-md-size);
+  line-height: var(--arcade-type-body-label-md-line-height);
+  color: var(--arcade-data-trend-positive);
+}
+
+.send-btc-keypad__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 25px;
+  padding: 0 16px;
+}
+
+.send-btc-keypad__key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97px;
+  height: 67px;
+  border: none;
+  background: transparent;
+  color: var(--arcade-text-standard);
+  font-family: var(--arcade-type-font-family);
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 33px;
+  letter-spacing: 0.25px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.send-btc-keypad__key:active {
+  background: var(--arcade-bg-subtle);
+  border-radius: 16px;
+}
+
+.send-btc-keypad__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--arcade-text-standard);
+}
+
+/* ── Search bar ── */
+
+.send-btc-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 9999px;
+  background: var(--arcade-bg-subtle);
+}
