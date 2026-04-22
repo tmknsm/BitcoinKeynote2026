@@ -9,7 +9,7 @@ import SendBitcoinCashtag from './SendBitcoinCashtag/SendBitcoinCashtag'
 import cashtagBgImg from './SendBitcoinCashtag/assets/images/sendtocashtagBG.png'
 import ReceiveAsBitcoin from './ReceiveAsBitcoin/ReceiveAsBitcoin'
 import BranToggle from './BranToggle/BranToggle'
-import receiveAsBtcBgImg from '@/pages/michaelt/projects/vibes/receive-as-bitcoin/assets/receiveAsBitcoinBG.png'
+import receiveAsBtcBgImg from './ReceiveAsBitcoin/receiveAsBitcoinBG.png'
 
 function SlideHeader({ onOverview, isTitleSlide }) {
   return (
