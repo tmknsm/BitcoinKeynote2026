@@ -13,6 +13,7 @@ import { ASheet } from '../assets/components/arcade/ASheet'
 import { AIcon } from '../assets/components/arcade/AIcon'
 import { useAutopilot } from '../assets/components/autopilot'
 import { nina, zach, jeremy, isabel } from '../assets/images/avatars'
+import statusBarImg from '../assets/images/status-bar.png'
 import loaderDark from './assets/loader-dark.json'
 import './send-bitcoin-cashtag-page.css'
 
@@ -491,6 +492,10 @@ export default function SendBitcoinCashtag() {
         >
           {body}
         </ASheet>
+
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 110 }}>
+          <img src={statusBarImg} alt="" style={{ width: '100%', filter: 'invert(1)' }} draggable={false} />
+        </div>
 
         {autopilot.cursor}
       </div>

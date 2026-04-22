@@ -27,6 +27,7 @@ import avatarJessicaImg from './assets/images/avatar-jessica.png'
 import nuxErrorImg from './assets/images/nux-error.png'
 import bluetoothIconImg from './assets/images/bluetooth-icon.png'
 import avatarImg from './assets/images/avatar.png'
+import statusBarImg from '../assets/images/status-bar.png'
 
 const colorMode = "dark"
 
@@ -229,6 +230,19 @@ export default function NearbyBitcoin() {
               : "background-color 1200ms ease-in-out",
         }}
       >
+        {/* Status bar */}
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 110 }}>
+          <img src={statusBarImg} alt="" style={{
+            width: '100%',
+            filter: isWhiteBg ? 'invert(1)' : 'invert(0)',
+            transition: isClosingFromFocus
+              ? 'filter 500ms ease-in-out'
+              : isRestoringUI
+                ? 'filter 400ms ease-in-out 200ms'
+                : 'filter 1200ms ease-in-out',
+          }} draggable={false} />
+        </div>
+
         {/* App bar */}
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 30, paddingTop: 54 }}>
           <img

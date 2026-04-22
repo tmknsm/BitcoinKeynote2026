@@ -8,6 +8,7 @@ import { AListUnordered } from '../assets/components/arcade/AListUnordered'
 import { AHeaderPage } from '../assets/components/arcade/AHeaderPage'
 import { AIcon } from '../assets/components/arcade/AIcon'
 import { useAutopilot } from '../assets/components/autopilot'
+import statusBarImg from '../assets/images/status-bar.png'
 import loaderDark from './assets/loader-dark.json'
 import heroImg from './assets/hero@2x.png'
 import './receive-as-bitcoin.css'
@@ -253,6 +254,9 @@ export default function ReceiveAsBitcoin() {
           {dialClass && <div className={dialClass}><DialScreen bps={bps} onBpsChange={setBps} onBack={() => navigate('intro', 'back')} onContinue={() => navigate('confirm', 'forward')} /></div>}
           {confirmClass && <div className={confirmClass}><ConfirmScreen percent={bpsToPercent(bps)} onBack={() => navigate('dial', 'back')} onConfirm={() => navigate('success', 'forward')} /></div>}
           {successClass && <div className={successClass}><SuccessScreen percent={bpsToPercent(bps)} onDone={() => { setBps(1000); navigate('intro', 'back') }} /></div>}
+        </div>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 110 }}>
+          <img src={statusBarImg} alt="" style={{ width: '100%', filter: 'invert(1)' }} draggable={false} />
         </div>
         {autopilot.cursor}
       </div>

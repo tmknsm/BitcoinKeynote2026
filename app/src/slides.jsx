@@ -414,12 +414,15 @@ SlideSquareNFC.theme = 'dark'
 SlideSquareNFC.className = 'slide--split-bg'
 
 export function SlideBeamBitcoin(p) {
+  const [runKey, setRunKey] = useState(0)
+  useEffect(() => { if (p.active) setRunKey(k => k + 1) }, [p.active])
+
   return (
     <SplitWithBg
       label="Pay nearby"
       headline="Beam bitcoin to friends<br/>or merchants."
       bgImage={nearbyBgImg}
-      visual={<NearbyBitcoin />}
+      visual={<NearbyBitcoin key={runKey} />}
       p={p}
     >
       <ul className="bullet-list">
@@ -434,12 +437,15 @@ SlideBeamBitcoin.theme = 'dark'
 SlideBeamBitcoin.className = 'slide--split-bg slide--no-logo-text'
 
 export function SlideP2PReceive(p) {
+  const [runKey, setRunKey] = useState(0)
+  useEffect(() => { if (p.active) setRunKey(k => k + 1) }, [p.active])
+
   return (
     <SplitWithBg
       label="Cash App 2.0"
       headline="Bitcoin in the background<br/>of everyday life"
       bgImage={cashtagBgImg}
-      visual={<SendBitcoinCashtag />}
+      visual={<SendBitcoinCashtag key={runKey} />}
       p={p}
     >
       <ul className="bullet-list">
@@ -454,12 +460,15 @@ SlideP2PReceive.theme = 'dark'
 SlideP2PReceive.className = 'slide--split-bg slide--no-logo-text'
 
 export function SlideReceiveAsBitcoin(p) {
+  const [runKey, setRunKey] = useState(0)
+  useEffect(() => { if (p.active) setRunKey(k => k + 1) }, [p.active])
+
   return (
     <SplitWithBg
       label="Cash App 2.0"
       headline="Bitcoin in the background<br/>of everyday life"
       bgImage={receiveAsBtcBgImg}
-      visual={<ReceiveAsBitcoin />}
+      visual={<ReceiveAsBitcoin key={runKey} />}
       p={p}
     >
       <ul className="bullet-list">
@@ -724,8 +733,11 @@ export function SlideIntelligenceSection(p) {
 SlideIntelligenceSection.theme = 'dark'
 
 export function SlideManagerbot(p) {
+  const [runKey, setRunKey] = useState(0)
+  useEffect(() => { if (p.active) setRunKey(k => k + 1) }, [p.active])
+
   return (
-    <SplitWithBg label="Managerbot — Square" headline="A protector<br/>on your side." visual={<MoneybotMockup active={p.active} />} p={p}>
+    <SplitWithBg label="Managerbot — Square" headline="A protector<br/>on your side." visual={<MoneybotMockup key={runKey} active={p.active} />} p={p}>
       <div className="chat-bubbles">
         <div className="chat-bubble">
           <div className="bot-name">Managerbot</div>
