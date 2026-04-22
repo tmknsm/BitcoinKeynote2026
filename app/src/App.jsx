@@ -287,6 +287,24 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKey)
   }, [stepVisible, overviewOpen])
 
+  // Swipe navigation for touch devices
+  useEffect(() => {
+    let startX = 0, startY = 0
+    const onStart = (e) => { startX = e.touches[0].clientX; startY = e.touches[0].clientY }
+    const onEnd = (e) => {
+      if (overviewOpen) return
+      const dx = e.changedTouches[0].clientX - startX
+      const dy = e.changedTouches[0].clientY - startY
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        if (dx < 0) stepVisible(1)
+        else stepVisible(-1)
+      }
+    }
+    window.addEventListener('touchstart', onStart, { passive: true })
+    window.addEventListener('touchend', onEnd, { passive: true })
+    return () => { window.removeEventListener('touchstart', onStart); window.removeEventListener('touchend', onEnd) }
+  }, [stepVisible, overviewOpen])
+
   return (
     <div className="deck">
 
