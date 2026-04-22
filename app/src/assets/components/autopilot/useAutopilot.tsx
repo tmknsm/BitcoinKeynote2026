@@ -91,14 +91,13 @@ export function useAutopilot(
     }
 
     let cancelled = false
+    const timers = new Set<ReturnType<typeof setTimeout>>()
     const alive = () => !cancelled && autopilotRef.current
 
     const sleep = (ms: number) =>
       new Promise<void>(resolve => {
-        const timer = setTimeout(resolve, ms)
-        // If we're cancelled mid-sleep we still let the timeout fire — callers
-        // always re-check `alive()` before acting on the elapsed time.
-        void timer
+        const id = setTimeout(() => { timers.delete(id); resolve() }, ms)
+        timers.add(id)
       })
 
     const waitFor = async (selector: string, maxMs = 2000) => {
@@ -189,6 +188,8 @@ export function useAutopilot(
     return () => {
       cancelled = true
       autopilotRef.current = false
+      timers.forEach(id => clearTimeout(id))
+      timers.clear()
     }
   }, [autopilot, phoneRef])
 

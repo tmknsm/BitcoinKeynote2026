@@ -571,7 +571,12 @@ export function ParticleField({
       animRef.current = requestAnimationFrame(animate)
     }
     animRef.current = requestAnimationFrame(animate)
-    return () => { cancelAnimationFrame(animRef.current) }
+    return () => {
+      cancelAnimationFrame(animRef.current)
+      // Release canvas memory — critical on mobile Safari
+      canvas.width = 0
+      canvas.height = 0
+    }
   }, [width, height, bgColor, particleColor, initParticles])
 
   return (

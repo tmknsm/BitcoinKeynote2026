@@ -15,9 +15,13 @@ export function useAutopilot(phoneRef, script) {
 
   useEffect(() => {
     let cancelled = false
+    const timers = new Set()
     const alive = () => !cancelled
 
-    const sleep = (ms) => new Promise(resolve => { setTimeout(resolve, ms) })
+    const sleep = (ms) => new Promise(resolve => {
+      const id = setTimeout(() => { timers.delete(id); resolve() }, ms)
+      timers.add(id)
+    })
 
     const waitFor = async (selector, maxMs = 2000) => {
       const root = phoneRef.current
@@ -97,7 +101,7 @@ export function useAutopilot(phoneRef, script) {
     }
 
     run()
-    return () => { cancelled = true }
+    return () => { cancelled = true; timers.forEach(id => clearTimeout(id)); timers.clear() }
   }, [phoneRef])
 
   const cursor = cursorVisible ? (
