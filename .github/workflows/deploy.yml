@@ -21,9 +21,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm install
+      - run: npm install --include=dev
         working-directory: app
-      - run: npm run build
+      - run: npx vite build
         working-directory: app
       - run: touch app/dist/.nojekyll
       - uses: actions/upload-pages-artifact@v3
