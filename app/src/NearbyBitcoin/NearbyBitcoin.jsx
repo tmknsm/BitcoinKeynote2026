@@ -240,6 +240,7 @@ export default function NearbyBitcoin() {
         position: 'relative',
         width: NEARBY_INNER_W * effectiveScale,
         height: NEARBY_INNER_H * effectiveScale,
+        borderRadius: 48 * effectiveScale,
         overflow: 'hidden',
         flexShrink: 0,
       }}
@@ -248,8 +249,6 @@ export default function NearbyBitcoin() {
       style={{
         position: 'absolute', top: 0, left: 0,
         width: NEARBY_INNER_W, height: NEARBY_INNER_H,
-        borderRadius: 48,
-        overflow: 'hidden',
         transform: `scale(${effectiveScale})`,
         transformOrigin: 'top left',
       }}

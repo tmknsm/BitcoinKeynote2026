@@ -425,12 +425,12 @@ export default function SendBitcoinCashtag() {
       position: 'relative',
       width: PROTO_INNER_W * effectiveScale,
       height: PROTO_INNER_H * effectiveScale,
-      overflow: 'hidden', flexShrink: 0,
+      borderRadius: 48 * effectiveScale, overflow: 'hidden',
+      flexShrink: 0,
     }}>
     <div style={{
       position: 'absolute', top: 0, left: 0,
       width: PROTO_INNER_W, height: PROTO_INNER_H,
-      borderRadius: 48, overflow: 'hidden',
       transform: `scale(${effectiveScale})`, transformOrigin: 'top left',
     }}>
       <div ref={phoneRef} className="send-btc-proto dark force-dark">
