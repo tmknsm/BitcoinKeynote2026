@@ -90,6 +90,17 @@ export function useAutopilot(
       return
     }
 
+    // Disable all user interaction inside the phone while autopilot drives it.
+    // Autopilot calls state setters directly — it doesn't dispatch real clicks —
+    // so blocking pointer events here doesn't affect the scripted animation.
+    const phone = phoneRef.current
+    const prevPointerEvents = phone?.style.pointerEvents ?? ''
+    const prevTouchAction = phone?.style.touchAction ?? ''
+    if (phone) {
+      phone.style.pointerEvents = 'none'
+      phone.style.touchAction = 'none'
+    }
+
     let cancelled = false
     const timers = new Set<ReturnType<typeof setTimeout>>()
     const alive = () => !cancelled && autopilotRef.current
@@ -190,6 +201,10 @@ export function useAutopilot(
       autopilotRef.current = false
       timers.forEach(id => clearTimeout(id))
       timers.clear()
+      if (phone) {
+        phone.style.pointerEvents = prevPointerEvents
+        phone.style.touchAction = prevTouchAction
+      }
     }
   }, [autopilot, phoneRef])
 

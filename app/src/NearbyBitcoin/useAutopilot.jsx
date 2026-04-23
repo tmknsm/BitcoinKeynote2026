@@ -14,6 +14,18 @@ export function useAutopilot(phoneRef, script) {
   scriptRef.current = script
 
   useEffect(() => {
+    // Autopilot is always-on here — disable all user interaction inside the
+    // phone so the scripted loop is the only thing driving the UI. Autopilot
+    // triggers state changes by calling setters directly, not by dispatching
+    // clicks, so blocking pointer events doesn't affect the animation.
+    const phone = phoneRef.current
+    const prevPointerEvents = phone?.style.pointerEvents ?? ''
+    const prevTouchAction = phone?.style.touchAction ?? ''
+    if (phone) {
+      phone.style.pointerEvents = 'none'
+      phone.style.touchAction = 'none'
+    }
+
     let cancelled = false
     const timers = new Set()
     const alive = () => !cancelled
@@ -101,7 +113,15 @@ export function useAutopilot(phoneRef, script) {
     }
 
     run()
-    return () => { cancelled = true; timers.forEach(id => clearTimeout(id)); timers.clear() }
+    return () => {
+      cancelled = true
+      timers.forEach(id => clearTimeout(id))
+      timers.clear()
+      if (phone) {
+        phone.style.pointerEvents = prevPointerEvents
+        phone.style.touchAction = prevTouchAction
+      }
+    }
   }, [phoneRef])
 
   const cursor = cursorVisible ? (
