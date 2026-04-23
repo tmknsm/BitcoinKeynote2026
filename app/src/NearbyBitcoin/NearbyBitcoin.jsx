@@ -31,8 +31,35 @@ import statusBarImg from '../assets/images/status-bar.png'
 
 const colorMode = "dark"
 
+const NEARBY_INNER_W = 390
+const NEARBY_INNER_H = 844
+const NEARBY_DESKTOP_SCALE = 0.75
+
 export default function NearbyBitcoin() {
   const phoneRef = useRef(null)
+  const outerRef = useRef(null)
+  const [mobileScale, setMobileScale] = useState(null)
+
+  useEffect(() => {
+    const outer = outerRef.current
+    if (!outer) return
+    const parent = outer.parentElement
+    if (!parent) return
+    const ro = new ResizeObserver(([entry]) => {
+      const isMobile = typeof window !== 'undefined'
+        && window.matchMedia('(max-width: 768px)').matches
+      if (isMobile) {
+        const availW = entry.contentRect.width
+        setMobileScale(Math.min(availW / NEARBY_INNER_W, NEARBY_DESKTOP_SCALE))
+      } else {
+        setMobileScale(null)
+      }
+    })
+    ro.observe(parent)
+    return () => ro.disconnect()
+  }, [])
+
+  const effectiveScale = mobileScale != null ? mobileScale : NEARBY_DESKTOP_SCALE
   const [activated, setActivated] = useState(false)
   const [freezeRequest, setFreezeRequest] = useState(false)
   const [bottomToggled, setBottomToggled] = useState(false)
@@ -208,14 +235,23 @@ export default function NearbyBitcoin() {
 
   return (
     <div
+      ref={outerRef}
       style={{
         position: 'relative',
-        width: 390, height: 844,
+        width: NEARBY_INNER_W * effectiveScale,
+        height: NEARBY_INNER_H * effectiveScale,
+        overflow: 'hidden',
+        flexShrink: 0,
+      }}
+    >
+    <div
+      style={{
+        position: 'absolute', top: 0, left: 0,
+        width: NEARBY_INNER_W, height: NEARBY_INNER_H,
         borderRadius: 48,
         overflow: 'hidden',
-        transform: 'scale(0.75)',
-        transformOrigin: 'center',
-        flexShrink: 0,
+        transform: `scale(${effectiveScale})`,
+        transformOrigin: 'top left',
       }}
     >
       <div
@@ -468,6 +504,7 @@ export default function NearbyBitcoin() {
 
         {autopilot.cursor}
       </div>
+    </div>
     </div>
   )
 }

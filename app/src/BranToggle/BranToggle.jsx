@@ -109,21 +109,36 @@ export default function BranToggle() {
   // Scale the fixed-size frame to fit its container with 32px horizontal padding
   const wrapRef = useRef(null)
   const [scale, setScale] = useState(1)
+  const [wrapHeight, setWrapHeight] = useState(null)
 
   useEffect(() => {
     const wrap = wrapRef.current
     if (!wrap) return
     const ro = new ResizeObserver(([entry]) => {
-      const availW = entry.contentRect.width - 64 // 32px padding each side
-      const availH = entry.contentRect.height - 64
-      setScale(Math.min(availW / INNER_W, availH / INNER_H, 1))
+      const isMobile = typeof window !== 'undefined'
+        && window.matchMedia('(max-width: 768px)').matches
+      if (isMobile) {
+        // Width-driven fit: scale to container width minus 24px on each side,
+        // then pin the wrap's height so the device has exactly 24px of frame all around.
+        const padEach = 24
+        const availW = entry.contentRect.width - padEach * 2
+        const newScale = Math.min(availW / INNER_W, 1)
+        setScale(newScale)
+        setWrapHeight(INNER_H * newScale + padEach * 2)
+      } else {
+        const padEach = 32
+        const availW = entry.contentRect.width - padEach * 2
+        const availH = entry.contentRect.height - padEach * 2
+        setScale(Math.min(availW / INNER_W, availH / INNER_H, 1))
+        setWrapHeight(null)
+      }
     })
     ro.observe(wrap)
     return () => ro.disconnect()
   }, [])
 
   return (
-    <div ref={wrapRef} style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div ref={wrapRef} style={{ width: '100%', height: wrapHeight != null ? wrapHeight : '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
     <div
       ref={frameRef}
       style={{

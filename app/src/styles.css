@@ -223,27 +223,28 @@ html, body, #root {
   .slide--split-bg .slide-header { left: 24px; right: 24px; top: 24px; }
   .slide-page-num { bottom: 24px; right: 24px; }
 
-  .slide--split-bg .split__top { padding: 80px 24px 0; }
-  .slide--split-bg .split__visual { margin: 16px; }
-  .slide--split-bg .split__bottom { padding: 0 24px 32px; }
+  .slide--split-bg .split__top { padding: 80px 24px 32px; }
+  .slide--split-bg .split__visual { margin: 0 16px; margin-top: auto; margin-bottom: auto; flex: 0 0 auto; }
+  .slide--split-bg .split__visual--overlay { padding: 24px; height: auto; overflow: visible; }
+  .slide--no-logo-text.slide--split-bg .split__visual { aspect-ratio: auto; }
+  .slide--bran.slide--split-bg .split__visual--overlay { padding: 0; }
+  .slide--split-bg .split__bottom { padding: 32px 24px; margin-top: 0; }
 
   .split { gap: 32px; }
 
-  .footage-grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
-  }
-  .footage-grid__content { padding: 24px 24px 40px; }
-
   .three-col { grid-template-columns: 1fr; gap: 32px; }
 
-  .stat-row { flex-direction: column; gap: 24px; }
-  .stat-row__logo { height: 80px; }
-  .stat-row__divider { width: 60px; height: 1px; margin: 0; }
+  .headline--xl { font-size: clamp(72px, 18vw, 160px); font-weight: 500; }
+  .headline--lg { font-size: clamp(44px, 12vw, 72px); line-height: 1.05; letter-spacing: -0.03em; }
+  .headline--md { font-size: clamp(42px, 8vw, 56px); }
+  .slide-thesis__content,
+  .slide-last-year__content { margin-top: auto; margin-bottom: 60px; }
 
-  .overview-header { padding: 24px 24px 0; }
-  .overview-close { top: 24px; right: 24px; }
-  .overview-grid { padding: 24px 24px 40px; gap: 16px; }
+  .title-open__subtitle { font-size: 18px !important; font-weight: 500 !important; }
+
+  .slide-open-agents__headline br { display: none; }
+
+  .logo-svg { height: 30px; width: 30px; }
 }
 
 .centered {
@@ -267,6 +268,12 @@ html, body, #root {
   font-size: clamp(28px, 5vw, 56px);
   font-weight: 400;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .stat-row__logo { height: 44px; }
+  .stat-row__divider { height: 48px; margin: 0 12px 0 16px; }
+  .stat-row .headline--xl { font-size: clamp(40px, 14vw, 64px); }
 }
 
 .rolling-counter {
@@ -327,6 +334,20 @@ html, body, #root {
   overflow: hidden;
 }
 .fpo--map img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+
+@media (max-width: 768px) {
+  .slide--split-bg .fpo--phone,
+  .slide--split-bg .fpo--map {
+    width: 100%; height: auto;
+    max-width: 292.5px;
+    aspect-ratio: 390 / 844;
+  }
+  .slide--split-bg .fpo--hardware {
+    width: 100%; height: auto;
+    max-width: 270px;
+    aspect-ratio: 3 / 2;
+  }
+}
 
 /* ── Bullet List ── */
 .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
@@ -634,6 +655,17 @@ html, body, #root {
   pointer-events: none;
 }
 
+@media (max-width: 768px) {
+  .footage-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+  }
+  .footage-grid__content {
+    padding: 24px 24px 100px;
+    justify-content: flex-end;
+  }
+}
+
 /* ── Footage Reel Slide (single full-screen video cycling through clips) ── */
 .slide--reel { padding: 0 !important; background: var(--black); }
 .slide--reel .slide-header { z-index: 3; }
@@ -655,6 +687,13 @@ html, body, #root {
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
+@media (max-width: 768px) {
+  .footage-reel {
+    top: 0; right: 0; bottom: 0; left: 0;
+    border-radius: 0;
+  }
 }
 
 /* ── Overview Overlay ── */
@@ -743,4 +782,10 @@ html, body, #root {
 
 .overview-title__sub {
   font-weight: 400; opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .overview-header { padding: 24px 24px 0; }
+  .overview-close { top: 24px; right: 24px; }
+  .overview-grid { padding: 24px 24px 40px; gap: 16px; }
 }

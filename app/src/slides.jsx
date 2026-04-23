@@ -80,7 +80,7 @@ export function SlideTitleOpen(p) {
       <SlideHeader onOverview={p.onOverview} isTitleSlide />
       <div style={{ marginTop: 'auto', marginBottom: 60 }}>
         <div className="headline headline--xl">Living on<br />Bitcoin</div>
-        <div style={{ marginTop: 24, fontSize: 22, fontWeight: 500, color: 'var(--black)' }}>Bitcoin Las Vegas 2026</div>
+        <div className="title-open__subtitle" style={{ marginTop: 24, fontSize: 22, fontWeight: 500, color: 'var(--black)' }}>Bitcoin Las Vegas 2026</div>
       </div>
       <PageNum index={p.index} total={p.total} />
     </>
@@ -92,10 +92,12 @@ export function SlideThesis(p) {
   return (
     <>
       <SlideHeader onOverview={p.onOverview} />
-      <div className="headline headline--lg" style={{ maxWidth: 950 }}>
-        Bitcoin works when it moves easily, when people can rely on it day to day, and when it fits naturally into how they earn, save, and spend.
+      <div className="slide-thesis__content">
+        <div className="headline headline--lg" style={{ maxWidth: 950 }}>
+          Bitcoin works when it moves easily, when people can rely on it day to day, and when it fits naturally into how they earn, save, and spend.
+        </div>
+        <div className="subhead" style={{ marginTop: 32 }}>Not when it sits idle as an asset.</div>
       </div>
-      <div className="subhead" style={{ marginTop: 32 }}>Not when it sits idle as an asset.</div>
       <PageNum index={p.index} total={p.total} />
     </>
   )
@@ -141,12 +143,14 @@ export function SlideLastYear(p) {
   return (
     <>
       <SlideHeader onOverview={p.onOverview} />
-      <div className="label">This Year</div>
-      <div className="headline headline--lg" style={{ marginTop: 12, maxWidth: 1000 }}>
-        <TypewriterText
-          text="We're showing you what living on bitcoin actually looks like."
-          active={p.active}
-        />
+      <div className="slide-last-year__content">
+        <div className="label">This Year</div>
+        <div className="headline headline--lg" style={{ marginTop: 12, maxWidth: 1000 }}>
+          <TypewriterText
+            text="We're showing you what living on bitcoin actually looks like."
+            active={p.active}
+          />
+        </div>
       </div>
       <PageNum index={p.index} total={p.total} />
     </>
@@ -199,17 +203,7 @@ SlideLivingProof.theme = 'dark'
 SlideLivingProof.className = 'slide--footage'
 
 export function SlideLivingReel(p) {
-  const [index, setIndex] = useState(0)
   const videoRef = useRef(null)
-
-  // Reset to first clip whenever the slide becomes active
-  useEffect(() => {
-    if (p.active) setIndex(0)
-  }, [p.active])
-
-  const handleEnded = () => {
-    setIndex((prev) => (prev + 1) % FOOTAGE_VIDEOS.length)
-  }
 
   return (
     <>
@@ -217,14 +211,13 @@ export function SlideLivingReel(p) {
       <div className="footage-reel">
         <video
           ref={videoRef}
-          key={FOOTAGE_VIDEOS[index]}
           className="footage-reel__video"
-          src={`./assets/Footage/${FOOTAGE_VIDEOS[index]}`}
+          src="./assets/Footage/12.mp4"
           autoPlay
           muted
           playsInline
           preload="auto"
-          onEnded={handleEnded}
+          loop
         />
       </div>
       <PageNum index={p.index} total={p.total} />
@@ -397,7 +390,7 @@ export function SlideBitcoinToggle(p) {
   )
 }
 SlideBitcoinToggle.theme = 'dark'
-SlideBitcoinToggle.className = 'slide--split-bg slide--no-logo-text'
+SlideBitcoinToggle.className = 'slide--split-bg slide--no-logo-text slide--bran'
 
 export function SlideSquareNFC(p) {
   return (
@@ -778,7 +771,7 @@ export function SlideOpenAgents(p) {
     <>
       <SlideHeader onOverview={p.onOverview} />
       <div className="centered" style={{ maxWidth: 900, margin: '0 auto' }}>
-        <div className="headline headline--lg">Open agents need<br />open money.</div>
+        <div className="headline headline--lg slide-open-agents__headline">Open agents need <br />open money.</div>
         <div className="subhead" style={{ marginTop: 32, textAlign: 'center', maxWidth: 720 }}>
           AI agents are becoming part of economic life. They need money.<br /><br />
           Bitcoin is the best money ever created: fixed supply, instant final settlement, no borders, no gatekeepers. The same properties that make it the best choice for people make it the obvious choice for every intelligent system.

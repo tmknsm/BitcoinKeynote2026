@@ -167,8 +167,35 @@ function SuccessScreen({ percent, onDone }) {
 
 /* ── Main ── */
 
+const PROTO_INNER_W = 390
+const PROTO_INNER_H = 844
+const PROTO_DESKTOP_SCALE = 0.75
+
 export default function ReceiveAsBitcoin() {
   const phoneRef = useRef(null)
+  const outerRef = useRef(null)
+  const [mobileScale, setMobileScale] = useState(null)
+
+  useEffect(() => {
+    const outer = outerRef.current
+    if (!outer) return
+    const parent = outer.parentElement
+    if (!parent) return
+    const ro = new ResizeObserver(([entry]) => {
+      const isMobile = typeof window !== 'undefined'
+        && window.matchMedia('(max-width: 768px)').matches
+      if (isMobile) {
+        const availW = entry.contentRect.width
+        setMobileScale(Math.min(availW / PROTO_INNER_W, PROTO_DESKTOP_SCALE))
+      } else {
+        setMobileScale(null)
+      }
+    })
+    ro.observe(parent)
+    return () => ro.disconnect()
+  }, [])
+
+  const effectiveScale = mobileScale != null ? mobileScale : PROTO_DESKTOP_SCALE
   const [screen, setScreen] = useState('intro')
   const [trans, setTrans] = useState(null)
   const [bps, setBps] = useState(1000)
@@ -242,10 +269,17 @@ export default function ReceiveAsBitcoin() {
   const successClass = cls('success')
 
   return (
+    <div ref={outerRef} style={{
+      position: 'relative',
+      width: PROTO_INNER_W * effectiveScale,
+      height: PROTO_INNER_H * effectiveScale,
+      overflow: 'hidden', flexShrink: 0,
+    }}>
     <div style={{
-      position: 'relative', width: 390, height: 844,
+      position: 'absolute', top: 0, left: 0,
+      width: PROTO_INNER_W, height: PROTO_INNER_H,
       borderRadius: 48, overflow: 'hidden',
-      transform: 'scale(0.75)', transformOrigin: 'center', flexShrink: 0,
+      transform: `scale(${effectiveScale})`, transformOrigin: 'top left',
     }}>
       <div ref={phoneRef} className="receive-btc-proto dark force-dark">
         <div className="receive-btc-status-bar" />
@@ -260,6 +294,7 @@ export default function ReceiveAsBitcoin() {
         </div>
         {autopilot.cursor}
       </div>
+    </div>
     </div>
   )
 }

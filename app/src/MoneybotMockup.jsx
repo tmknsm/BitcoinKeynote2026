@@ -257,13 +257,18 @@ function useResponsiveScale(ref, contentHeight) {
   React.useEffect(() => {
     const parent = ref.current?.parentElement
     if (!parent) return
-    const PADDING = 32 * 2
     const ro = new ResizeObserver(([entry]) => {
+      const isMobile = typeof window !== 'undefined'
+        && window.matchMedia('(max-width: 768px)').matches
+      // Phone: overlay already supplies 24px breathing room, so fill the full content width.
+      // Desktop/tablet: keep the historical 32px each side inset.
+      const PADDING = isMobile ? 0 : 32 * 2
       const w = entry.contentRect.width - PADDING
       const h = entry.contentRect.height - PADDING
       const scaleByWidth = w / BASE_WIDTH
       const scaleByHeight = contentHeight > 0 ? h / contentHeight : Infinity
-      const fitted = Math.min(MAX_SCALE, scaleByWidth, scaleByHeight)
+      const maxAllowed = isMobile ? 1 : MAX_SCALE
+      const fitted = Math.min(maxAllowed, scaleByWidth, scaleByHeight)
       setScale(Math.max(0.1, fitted))
     })
     ro.observe(parent)
@@ -279,10 +284,18 @@ export default function MoneybotMockup({ active }) {
   const { refA, refB, heights } = useMeasure()
   const containerRef = React.useRef(null)
   const [isMobile, setIsMobile] = React.useState(() => window.innerWidth <= 1024)
+  const [isPhone, setIsPhone] = React.useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches)
 
   React.useEffect(() => {
     const mql = window.matchMedia('(max-width: 1024px)')
     const onChange = (e) => setIsMobile(e.matches)
+    mql.addEventListener('change', onChange)
+    return () => mql.removeEventListener('change', onChange)
+  }, [])
+
+  React.useEffect(() => {
+    const mql = window.matchMedia('(max-width: 768px)')
+    const onChange = (e) => setIsPhone(e.matches)
     mql.addEventListener('change', onChange)
     return () => mql.removeEventListener('change', onChange)
   }, [])
@@ -313,12 +326,22 @@ export default function MoneybotMockup({ active }) {
 
   const containerStyle = {
     transform: `scale(${scale})`,
+    transformOrigin: isPhone ? 'top left' : undefined,
     height: isMobile && heights ? maxHeight : undefined,
     alignItems: isMobile ? 'center' : undefined,
   }
 
+  const outerStyle = isPhone && heights ? {
+    width: BASE_WIDTH * scale,
+    height: maxHeight * scale,
+    overflow: 'hidden',
+    flexShrink: 0,
+    position: 'relative',
+  } : { display: 'contents' }
+
   return (
-    <div className="mm-container" ref={containerRef} style={containerStyle}>
+    <div ref={containerRef} style={outerStyle}>
+    <div className="mm-container" style={containerStyle}>
       {/* Hidden non-animated clones for measurement */}
       {!heights && (
         <div style={{ position: 'absolute', visibility: 'hidden', pointerEvents: 'none', width: 720, zIndex: -1 }}>
@@ -346,6 +369,7 @@ export default function MoneybotMockup({ active }) {
           </AnimatePresence>
         )}
       </motion.div>
+    </div>
     </div>
   )
 }
