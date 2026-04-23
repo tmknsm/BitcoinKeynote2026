@@ -224,8 +224,7 @@ html, body, #root {
   .slide-page-num { bottom: 24px; right: 24px; }
 
   .slide--split-bg .split__top { padding: 80px 24px 32px; }
-  .slide--split-bg .split__visual { margin: 0 16px; margin-top: auto; margin-bottom: auto; flex: 0 0 auto; background: transparent; }
-  .slide--split-bg .split__bg-img { display: none; }
+  .slide--split-bg .split__visual { margin: 0 16px; margin-top: auto; margin-bottom: auto; flex: 0 0 auto; }
   .slide--split-bg .split__visual--overlay { padding: 24px; height: auto; overflow: visible; }
   .slide--no-logo-text.slide--split-bg .split__visual { aspect-ratio: auto; }
   .slide--bran.slide--split-bg .split__visual--overlay { padding: 0; }
