@@ -76,6 +76,16 @@ function HideToggleButton({ slideIndex, isHidden, onToggle }) {
 
 function Overview({ open, current, hiddenSlides, onToggleHidden, onSelect, onClose }) {
   const thumbRefs = useRef([])
+  const scrolledRef = useRef(false)
+
+  // Track whether the user scrolled so we can suppress accidental taps
+  useEffect(() => {
+    const onTouchStart = () => { scrolledRef.current = false }
+    const onTouchMove = () => { scrolledRef.current = true }
+    window.addEventListener('touchstart', onTouchStart, { passive: true })
+    window.addEventListener('touchmove', onTouchMove, { passive: true })
+    return () => { window.removeEventListener('touchstart', onTouchStart); window.removeEventListener('touchmove', onTouchMove) }
+  }, [])
 
   useEffect(() => {
     const observers = []
@@ -127,7 +137,7 @@ function Overview({ open, current, hiddenSlides, onToggleHidden, onSelect, onClo
             <div
               key={i}
               className={`overview-thumb${i === current ? ' is-current' : ''}${isHidden ? ' is-hidden-thumb' : ''}`}
-              onClick={() => { if (!isHidden) onSelect(i) }}
+              onClick={() => { if (!isHidden && !scrolledRef.current) onSelect(i) }}
             >
               <div
                 className="overview-thumb__frame"
@@ -287,12 +297,18 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKey)
   }, [stepVisible, overviewOpen])
 
-  // Swipe navigation for touch devices
+  // Swipe navigation for touch devices (disabled while overview is open)
+  const overviewOpenRef = useRef(overviewOpen)
+  overviewOpenRef.current = overviewOpen
   useEffect(() => {
-    let startX = 0, startY = 0
-    const onStart = (e) => { startX = e.touches[0].clientX; startY = e.touches[0].clientY }
+    let startX = 0, startY = 0, tracking = false
+    const onStart = (e) => {
+      if (overviewOpenRef.current) { tracking = false; return }
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY; tracking = true
+    }
     const onEnd = (e) => {
-      if (overviewOpen) return
+      if (!tracking) return
+      tracking = false
       const dx = e.changedTouches[0].clientX - startX
       const dy = e.changedTouches[0].clientY - startY
       if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
@@ -303,7 +319,7 @@ export default function App() {
     window.addEventListener('touchstart', onStart, { passive: true })
     window.addEventListener('touchend', onEnd, { passive: true })
     return () => { window.removeEventListener('touchstart', onStart); window.removeEventListener('touchend', onEnd) }
-  }, [stepVisible, overviewOpen])
+  }, [stepVisible])
 
   return (
     <div className="deck">
