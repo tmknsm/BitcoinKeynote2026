@@ -11,7 +11,7 @@ const T = '0.15s'
 const INNER_W = 800
 const INNER_H = 500
 
-export default function BranToggle() {
+export default function BranToggle({ active = true }) {
   const [isActive, setIsActive] = useState(false)
   const [selectorStyle, setSelectorStyle] = useState({ left: 4, width: 40 })
   const frameRef = useRef(null)
@@ -36,11 +36,21 @@ export default function BranToggle() {
     }
   }, [])
 
-  // Auto-start demo loop on mount
+  // Auto-start demo loop whenever the slide is active. Always begin from the
+  // fiat state ($27.00) and then toggle to bitcoin — slides stay mounted, so
+  // without this reset the animation could be mid-cycle on re-entry.
   useEffect(() => {
     const cursor = cursorRef.current
     const frame = frameRef.current
     if (!cursor || !frame) return
+    if (!active) {
+      cursor.style.opacity = '0'
+      return
+    }
+
+    // Reset to fiat state at the start of every run.
+    setIsActive(false)
+    setSelectorStyle({ left: 4, width: 40 })
 
     const restLeft = 230, restTop = 90
     let cancelled = false
@@ -104,7 +114,7 @@ export default function BranToggle() {
       timeoutsRef.current.forEach(id => clearTimeout(id))
       timeoutsRef.current = []
     }
-  }, [toggleTo, schedule])
+  }, [active, toggleTo, schedule])
 
   // Scale the fixed-size frame to fit its container with 32px horizontal padding
   const wrapRef = useRef(null)

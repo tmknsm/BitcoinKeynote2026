@@ -205,6 +205,18 @@ SlideLivingProof.className = 'slide--footage'
 export function SlideLivingReel(p) {
   const videoRef = useRef(null)
 
+  // Slides stay mounted, so <video autoPlay> only fires once. Restart from
+  // the beginning every time this slide becomes active.
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v || !p.active) return
+    try { v.currentTime = 0 } catch {}
+    const playPromise = v.play()
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {})
+    }
+  }, [p.active])
+
   return (
     <>
       <SlideHeader onOverview={p.onOverview} />
@@ -378,7 +390,7 @@ export function SlideBitcoinToggle(p) {
     <SplitWithBg
       label="Toggle to bitcoin"
       headline="Customer-facing<br/>bitcoin toggle"
-      visual={<BranToggle />}
+      visual={<BranToggle active={p.active} />}
       p={p}
     >
       <ul className="bullet-list">
@@ -710,6 +722,7 @@ export function SlideFoundation(p) {
   )
 }
 SlideFoundation.theme = 'dark'
+SlideFoundation.className = 'slide--top-start'
 
 export function SlideIntelligenceSection(p) {
   return (

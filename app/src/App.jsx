@@ -79,20 +79,43 @@ function Overview({ open, current, hiddenSlides, onToggleHidden, onSelect, onClo
   const scrollingRef = useRef(false)
   const scrollTimerRef = useRef(null)
   const overlayRef = useRef(null)
+  const touchWasScrollingRef = useRef(false)
 
-  // Suppress clicks while the overview is scrolling or momentum-scrolling.
-  // The flag stays true until 150ms after the last scroll event, so a
-  // "tap to stop momentum" won't accidentally select a slide.
+  // Suppress clicks while the overview is momentum-scrolling on mobile.
+  // Two guards work together:
+  //  1. A 400ms debounce after the last scroll event (long enough for mobile
+  //     momentum gaps between scroll ticks).
+  //  2. A touch-aware flag that snapshots whether scrolling was active when
+  //     the finger went down — a "tap to stop momentum" is not a selection.
   useEffect(() => {
     const el = overlayRef.current
     if (!el) return
+
+    // Reset state each time the overlay opens so stale flags from a previous
+    // session can't block clicks or preserve a mid-grid scroll position.
+    scrollingRef.current = false
+    touchWasScrollingRef.current = false
+    clearTimeout(scrollTimerRef.current)
+    if (open) el.scrollTop = 0
+
     const onScroll = () => {
       scrollingRef.current = true
       clearTimeout(scrollTimerRef.current)
-      scrollTimerRef.current = setTimeout(() => { scrollingRef.current = false }, 150)
+      scrollTimerRef.current = setTimeout(() => { scrollingRef.current = false }, 400)
     }
+
+    // Capture whether momentum-scroll was active when the finger lands.
+    const onTouchStart = () => {
+      touchWasScrollingRef.current = scrollingRef.current
+    }
+
     el.addEventListener('scroll', onScroll, { passive: true })
-    return () => { el.removeEventListener('scroll', onScroll); clearTimeout(scrollTimerRef.current) }
+    el.addEventListener('touchstart', onTouchStart, { passive: true })
+    return () => {
+      el.removeEventListener('scroll', onScroll)
+      el.removeEventListener('touchstart', onTouchStart)
+      clearTimeout(scrollTimerRef.current)
+    }
   }, [open])
 
   useEffect(() => {
@@ -145,7 +168,7 @@ function Overview({ open, current, hiddenSlides, onToggleHidden, onSelect, onClo
             <div
               key={i}
               className={`overview-thumb${i === current ? ' is-current' : ''}${isHidden ? ' is-hidden-thumb' : ''}`}
-              onClick={() => { if (!isHidden && !scrollingRef.current) onSelect(i) }}
+              onClick={() => { if (!isHidden && !scrollingRef.current && !touchWasScrollingRef.current) onSelect(i) }}
             >
               <div
                 className="overview-thumb__frame"
@@ -164,6 +187,7 @@ function Overview({ open, current, hiddenSlides, onToggleHidden, onSelect, onClo
                   <SlideComponent
                     index={visiblePos >= 0 ? visiblePos : 0}
                     total={visibleTotal || 1}
+                    active={false}
                     onOverview={() => {}}
                   />
                 </div>
