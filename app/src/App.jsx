@@ -158,7 +158,8 @@ function Overview({ open, current, hiddenSlides, onToggleHidden, onSelect, onClo
             <span className="overview-title__sub"> · {hiddenSlides.size} hidden</span>
           )}
         </div>
-        <img src={closeIcon} alt="Close" className="overview-close" onClick={onClose} />
+        <img src={closeIcon} alt="Close" className="overview-close"
+             onClick={() => { if (!scrollingRef.current && !touchWasScrollingRef.current) onClose() }} />
       </div>
       <div className="overview-grid">
         {SLIDES.map((SlideComponent, i) => {
@@ -250,6 +251,18 @@ export default function App() {
       localStorage.setItem(HIDDEN_STORAGE_KEY, JSON.stringify([...hiddenSlides]))
     } catch {}
   }, [hiddenSlides])
+
+  // Lock body scroll while the overview is open so iOS can't chain scroll
+  // events through the overlay to the slides behind it.
+  useEffect(() => {
+    if (!overviewOpen) return
+    document.documentElement.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.documentElement.style.overflow = ''
+      document.body.style.overflow = ''
+    }
+  }, [overviewOpen])
 
   // Build the list of visible SLIDES indices and a mapping for page-number display
   const { visibleIndices, visiblePositions, visibleTotal } = useMemo(() => {
