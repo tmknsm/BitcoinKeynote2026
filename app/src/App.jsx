@@ -76,16 +76,24 @@ function HideToggleButton({ slideIndex, isHidden, onToggle }) {
 
 function Overview({ open, current, hiddenSlides, onToggleHidden, onSelect, onClose }) {
   const thumbRefs = useRef([])
-  const scrolledRef = useRef(false)
+  const scrollingRef = useRef(false)
+  const scrollTimerRef = useRef(null)
+  const overlayRef = useRef(null)
 
-  // Track whether the user scrolled so we can suppress accidental taps
+  // Suppress clicks while the overview is scrolling or momentum-scrolling.
+  // The flag stays true until 150ms after the last scroll event, so a
+  // "tap to stop momentum" won't accidentally select a slide.
   useEffect(() => {
-    const onTouchStart = () => { scrolledRef.current = false }
-    const onTouchMove = () => { scrolledRef.current = true }
-    window.addEventListener('touchstart', onTouchStart, { passive: true })
-    window.addEventListener('touchmove', onTouchMove, { passive: true })
-    return () => { window.removeEventListener('touchstart', onTouchStart); window.removeEventListener('touchmove', onTouchMove) }
-  }, [])
+    const el = overlayRef.current
+    if (!el) return
+    const onScroll = () => {
+      scrollingRef.current = true
+      clearTimeout(scrollTimerRef.current)
+      scrollTimerRef.current = setTimeout(() => { scrollingRef.current = false }, 150)
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => { el.removeEventListener('scroll', onScroll); clearTimeout(scrollTimerRef.current) }
+  }, [open])
 
   useEffect(() => {
     const observers = []
@@ -105,7 +113,7 @@ function Overview({ open, current, hiddenSlides, onToggleHidden, onSelect, onClo
       observers.push(ro)
     })
     return () => observers.forEach(ro => ro.disconnect())
-  })
+  }, [open, hiddenSlides])
 
   // Compute visible position for each slide so thumbnail labels reflect the live running order
   const visiblePositions = useMemo(() => {
@@ -119,7 +127,7 @@ function Overview({ open, current, hiddenSlides, onToggleHidden, onSelect, onClo
   const visibleTotal = SLIDES.length - hiddenSlides.size
 
   return (
-    <div className={`overview-overlay${open ? ' open' : ''}`}>
+    <div ref={overlayRef} className={`overview-overlay${open ? ' open' : ''}`}>
       <div className="overview-header">
         <div className="overview-title">
           All Slides
@@ -137,7 +145,7 @@ function Overview({ open, current, hiddenSlides, onToggleHidden, onSelect, onClo
             <div
               key={i}
               className={`overview-thumb${i === current ? ' is-current' : ''}${isHidden ? ' is-hidden-thumb' : ''}`}
-              onClick={() => { if (!isHidden && !scrolledRef.current) onSelect(i) }}
+              onClick={() => { if (!isHidden && !scrollingRef.current) onSelect(i) }}
             >
               <div
                 className="overview-thumb__frame"
